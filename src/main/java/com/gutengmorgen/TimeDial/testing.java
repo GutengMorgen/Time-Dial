@@ -113,30 +113,14 @@ public class testing {
 
 		JPanel panel_1 = new JPanel();
 		scrollPane.setViewportView(panel_1);
-		GridBagLayout gbl_panel_1 = new GridBagLayout();
-		gbl_panel_1.columnWidths = new int[] { 0, 0, 0, 0, 0, 0, 0 };
-		gbl_panel_1.rowHeights = new int[] { 0, 0, 0, 0 };
-		gbl_panel_1.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE };
-		gbl_panel_1.rowWeights = new double[] { 0.0, 0.0, 1.0, Double.MIN_VALUE };
-		panel_1.setLayout(gbl_panel_1);
-
+		panel_1.setLayout(new BorderLayout(0, 0));
+		
 		textField = new JTextField();
-		GridBagConstraints gbc_textField = new GridBagConstraints();
-		gbc_textField.insets = new Insets(0, 0, 5, 0);
-		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField.gridx = 5;
-		gbc_textField.gridy = 1;
-		panel_1.add(textField, gbc_textField);
-		textField.requestFocusInWindow();
+		panel_1.add(textField, BorderLayout.NORTH);
 		textField.setColumns(10);
-		ShortcutManager.saveClose(this, textField);
 		
 		JTextArea textArea = new JTextArea();
-		GridBagConstraints gbc_textArea = new GridBagConstraints();
-		gbc_textArea.fill = GridBagConstraints.BOTH;
-		gbc_textArea.gridx = 5;
-		gbc_textArea.gridy = 2;
-		panel_1.add(textArea, gbc_textArea);
+		panel_1.add(textArea, BorderLayout.CENTER);
 	}
 
 	public void saveClose() {
