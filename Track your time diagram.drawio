@@ -1,0 +1,453 @@
+<mxfile host="Electron" modified="2023-10-31T02:12:05.979Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.1.2 Chrome/106.0.5249.199 Electron/21.4.3 Safari/537.36" etag="HjvQ43MrNFWW8WaDRxvX" version="21.1.2" type="device" pages="2">
+  <diagram id="fGHJM5MCqLucSSKI0ixK" name="Desing">
+    <mxGraphModel dx="1143" dy="1038" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="6000" pageHeight="6000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="WX6EeEbefu8KRz162WAU-1" value="" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=#36393d;fontFamily=Helvetica;fontSize=11;fillColor=#eeeeee;" parent="1" vertex="1">
+          <mxGeometry x="175.75" y="-187" width="569" height="397" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-2" value="v1.0" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;strokeColor=#001DBC;fontFamily=Helvetica;fontSize=11;fillColor=#0050ef;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="175" y="-227" width="568" height="31" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-26" value="" style="group" parent="1" vertex="1" connectable="0">
+          <mxGeometry x="200" y="2" width="518" height="117" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-3" value="" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;strokeColor=#212121;fontFamily=Helvetica;fontSize=11;fillColor=#ebeaea;strokeWidth=1;glass=0;fontColor=#333333;" parent="WX6EeEbefu8KRz162WAU-26" vertex="1">
+          <mxGeometry y="30" width="518" height="87" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-5" value="Description:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontFamily=Lucida Console;fontColor=#000000;fontStyle=4" parent="WX6EeEbefu8KRz162WAU-26" vertex="1">
+          <mxGeometry width="109.5" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-27" value="" style="group" parent="1" vertex="1" connectable="0">
+          <mxGeometry x="201.25" y="-179" width="518" height="66" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-18" value="" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;strokeColor=#757575;fontFamily=Helvetica;fontSize=11;fillColor=#E6E6E6;strokeWidth=1;glass=0;fontColor=#333333;" parent="WX6EeEbefu8KRz162WAU-27" vertex="1">
+          <mxGeometry y="23" width="518" height="43" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-19" value="Last update:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontFamily=Lucida Console;fontColor=#575757;fontStyle=4" parent="WX6EeEbefu8KRz162WAU-27" vertex="1">
+          <mxGeometry width="90.75" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-20" value="Tag:" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontFamily=Lucida Console;fontColor=#575757;fontStyle=4" parent="WX6EeEbefu8KRz162WAU-27" vertex="1">
+          <mxGeometry y="24" width="184.75" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-21" value="Description:" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontFamily=Lucida Console;fontColor=#575757;fontStyle=4" parent="WX6EeEbefu8KRz162WAU-27" vertex="1">
+          <mxGeometry x="186.75" y="24" width="330" height="19" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-23" value="Studing" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontFamily=Lucida Console;fontColor=#575757;fontStyle=0" parent="WX6EeEbefu8KRz162WAU-27" vertex="1">
+          <mxGeometry x="1.5" y="45" width="182.25" height="21" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-24" value="Estoy estudiando memory manamenget" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontFamily=Lucida Console;fontColor=#575757;fontStyle=0" parent="WX6EeEbefu8KRz162WAU-27" vertex="1">
+          <mxGeometry x="186.75" y="45" width="331" height="21" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-25" value="" style="endArrow=none;html=1;rounded=0;labelBackgroundColor=default;strokeColor=#666666;fontFamily=Helvetica;fontSize=11;fontColor=default;shape=connector;exitX=0.358;exitY=0.996;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.358;entryY=0.001;entryDx=0;entryDy=0;entryPerimeter=0;" parent="WX6EeEbefu8KRz162WAU-27" source="WX6EeEbefu8KRz162WAU-18" target="WX6EeEbefu8KRz162WAU-18" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="191.75" y="95" as="sourcePoint" />
+            <mxPoint x="185.75" y="23" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-28" value="" style="group" parent="1" vertex="1" connectable="0">
+          <mxGeometry x="202.25" y="-101" width="514.5" height="89" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-6" value="Tag:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontFamily=Lucida Console;fontColor=#000000;fontStyle=4" parent="WX6EeEbefu8KRz162WAU-28" vertex="1">
+          <mxGeometry width="71.5" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-7" value="Working on my project" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;strokeColor=#383452;fontFamily=Helvetica;fontSize=11;fillColor=#989BF5;arcSize=0;" parent="WX6EeEbefu8KRz162WAU-28" vertex="1">
+          <mxGeometry y="66" width="132" height="23" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-8" value="Studing" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;strokeColor=#13394D;fontFamily=Helvetica;fontSize=11;fillColor=#1B91CC;fontColor=#ffffff;arcSize=0;" parent="WX6EeEbefu8KRz162WAU-28" vertex="1">
+          <mxGeometry x="107.5" y="30" width="89.5" height="23" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-9" value="Relax" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;strokeColor=#383452;fontFamily=Helvetica;fontSize=11;fillColor=#989BF5;arcSize=0;" parent="WX6EeEbefu8KRz162WAU-28" vertex="1">
+          <mxGeometry x="317.5" y="30" width="88.5" height="23" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-10" value="Playing" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;strokeColor=#383452;fontFamily=Helvetica;fontSize=11;fillColor=#989BF5;arcSize=0;" parent="WX6EeEbefu8KRz162WAU-28" vertex="1">
+          <mxGeometry x="215" y="30" width="87" height="23" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-11" value="Wander Online" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;strokeColor=#383452;fontFamily=Helvetica;fontSize=11;fillColor=#989BF5;arcSize=0;" parent="WX6EeEbefu8KRz162WAU-28" vertex="1">
+          <mxGeometry x="421.5" y="30" width="93" height="23" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-12" value="Working" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;strokeColor=#383452;fontFamily=Helvetica;fontSize=11;fillColor=#989BF5;arcSize=0;" parent="WX6EeEbefu8KRz162WAU-28" vertex="1">
+          <mxGeometry y="30" width="93" height="23" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-13" value="Organizing" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;strokeColor=#383452;fontFamily=Helvetica;fontSize=11;fillColor=#989BF5;arcSize=0;" parent="WX6EeEbefu8KRz162WAU-28" vertex="1">
+          <mxGeometry x="146.5" y="66" width="81" height="23" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-14" value="+" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;strokeColor=#383452;fontFamily=Helvetica;fontSize=11;fillColor=#989BF5;arcSize=0;" parent="WX6EeEbefu8KRz162WAU-28" vertex="1">
+          <mxGeometry x="244.5" y="66" width="38" height="23" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-29" value="" style="group" parent="1" vertex="1" connectable="0">
+          <mxGeometry x="201.25" y="132" width="516.5" height="73" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-15" value="SAVE(ctrl + shift + s)" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;fontFamily=Lucida Console;fontSize=15;arcSize=0;fontStyle=0" parent="WX6EeEbefu8KRz162WAU-29" vertex="1">
+          <mxGeometry width="516.5" height="51" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-17" value="View report" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=bottom;whiteSpace=wrap;rounded=0;fontSize=11;fontFamily=Lucida Console;fontColor=#000000;fontStyle=4" parent="WX6EeEbefu8KRz162WAU-29" vertex="1">
+          <mxGeometry y="51" width="91.75" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-30" value="" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=#36393d;fontFamily=Helvetica;fontSize=11;fillColor=#eeeeee;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" vertex="1">
+          <mxGeometry x="103.75" y="386" width="569" height="335" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-31" value="v1.1" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;strokeColor=#001DBC;fontFamily=Helvetica;fontSize=11;fillColor=#0050ef;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="103" y="346" width="570" height="31" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-32" value="" style="group" parent="1" vertex="1" connectable="0">
+          <mxGeometry x="129.25" y="526" width="518" height="117" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-33" value="afuefuaufaiuhewf8fkjnawefne" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;strokeColor=#212121;fontFamily=Verdana;fontSize=11;fillColor=#ebeaea;strokeWidth=1;glass=0;fontColor=#333333;align=left;verticalAlign=top;" parent="WX6EeEbefu8KRz162WAU-32" vertex="1">
+          <mxGeometry y="30" width="518" height="87" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-34" value="Description:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontFamily=Lucida Console;fontColor=#000000;fontStyle=4" parent="WX6EeEbefu8KRz162WAU-32" vertex="1">
+          <mxGeometry width="109.5" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-57" value="" style="group" parent="1" vertex="1" connectable="0">
+          <mxGeometry x="129.25" y="456" width="475.75" height="53" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-44" value="Tag:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontFamily=Lucida Console;fontColor=#000000;fontStyle=4" parent="WX6EeEbefu8KRz162WAU-57" vertex="1">
+          <mxGeometry width="71.5" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-46" value="Studing" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;strokeColor=#13394D;fontFamily=Helvetica;fontSize=11;fillColor=#1B91CC;fontColor=#ffffff;arcSize=0;" parent="WX6EeEbefu8KRz162WAU-57" vertex="1">
+          <mxGeometry x="107.5" y="30" width="89.5" height="23" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-47" value="Relax" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;strokeColor=#383452;fontFamily=Helvetica;fontSize=11;fillColor=#989BF5;arcSize=0;" parent="WX6EeEbefu8KRz162WAU-57" vertex="1">
+          <mxGeometry x="216.75" y="30" width="88.5" height="23" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-49" value="Wander Online" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;strokeColor=#383452;fontFamily=Helvetica;fontSize=11;fillColor=#989BF5;arcSize=0;" parent="WX6EeEbefu8KRz162WAU-57" vertex="1">
+          <mxGeometry x="324.75" y="30" width="93" height="23" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-50" value="Working" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;strokeColor=#383452;fontFamily=Helvetica;fontSize=11;fillColor=#989BF5;arcSize=0;" parent="WX6EeEbefu8KRz162WAU-57" vertex="1">
+          <mxGeometry y="30" width="93" height="23" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-52" value="..." style="rounded=1;whiteSpace=wrap;html=1;shadow=0;strokeColor=#383452;fontFamily=Helvetica;fontSize=11;fillColor=#989BF5;arcSize=0;" parent="WX6EeEbefu8KRz162WAU-57" vertex="1">
+          <mxGeometry x="437.75" y="30" width="38" height="23" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-58" value="" style="group;align=center;" parent="1" vertex="1" connectable="0">
+          <mxGeometry x="129.25" y="394" width="518" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-36" value="Tag: Studing - Description: Estoy estudiando memory manamenget" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;strokeColor=#757575;fontFamily=Lucida Console;fontSize=8;fillColor=#E6E6E6;strokeWidth=1;glass=0;fontColor=#333333;align=left;verticalAlign=top;" parent="WX6EeEbefu8KRz162WAU-58" vertex="1">
+          <mxGeometry y="23" width="518" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-37" value="Last update:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontFamily=Lucida Console;fontColor=#575757;fontStyle=4" parent="WX6EeEbefu8KRz162WAU-58" vertex="1">
+          <mxGeometry width="90.75" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-55" value="View report" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontFamily=Lucida Console;fontColor=#000000;fontStyle=4" parent="WX6EeEbefu8KRz162WAU-58" vertex="1">
+          <mxGeometry x="426.25" y="1" width="91.75" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-54" value="SAVE(ctrl + shift + s)" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;fontFamily=Lucida Console;fontSize=15;arcSize=0;fontStyle=0" parent="1" vertex="1">
+          <mxGeometry x="130" y="661" width="516.5" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-59" value="" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=#36393d;fontFamily=Helvetica;fontSize=11;fillColor=#eeeeee;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" vertex="1">
+          <mxGeometry x="194" y="890" width="471" height="268" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-60" value="v1.2" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;strokeColor=#001DBC;fontFamily=Helvetica;fontSize=11;fillColor=#0050ef;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="192" y="850" width="474" height="31" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-75" value="SAVE(ctrl + shift + s)" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;fontFamily=Lucida Console;fontSize=15;arcSize=0;fontStyle=0" parent="1" vertex="1">
+          <mxGeometry x="213" y="1097" width="430.63" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-62" value="tema:&amp;nbsp;&lt;br&gt;subtema:&lt;br&gt;descripcion:&lt;br&gt;metodo: apuntes, videos, lectura, etc..." style="rounded=0;whiteSpace=wrap;html=1;shadow=0;strokeColor=#212121;fontFamily=Verdana;fontSize=11;fillColor=#ebeaea;strokeWidth=1;glass=0;fontColor=#333333;align=left;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="214" y="1000" width="432.5" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-63" value="Description:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontFamily=Lucida Console;fontColor=#000000;fontStyle=4" parent="1" vertex="1">
+          <mxGeometry x="213" y="965" width="109.5" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-65" value="Tag:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontFamily=Lucida Console;fontColor=#000000;fontStyle=4" parent="1" vertex="1">
+          <mxGeometry x="491" y="968.75" width="44.75" height="22.5" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-66" value="Studing" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;fontFamily=Helvetica;fontSize=11;arcSize=0;fillColor=#A1A5BF;strokeColor=#4D4D4D;" parent="1" vertex="1">
+          <mxGeometry x="538.5" y="968.25" width="89.5" height="23" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-70" value="..." style="rounded=1;whiteSpace=wrap;html=1;shadow=0;fontFamily=Helvetica;fontSize=11;arcSize=0;strokeColor=#4D4D4D;" parent="1" vertex="1">
+          <mxGeometry x="628" y="968.25" width="18.5" height="23" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-79" value="" style="group" parent="1" vertex="1" connectable="0">
+          <mxGeometry x="216" y="899" width="428.25" height="47" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-72" value="Tag: Studing - Description: Estoy estudiando memory manamenget" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;strokeColor=#757575;fontFamily=Lucida Console;fontSize=8;fillColor=#E6E6E6;strokeWidth=1;glass=0;fontColor=#333333;align=left;verticalAlign=top;" parent="WX6EeEbefu8KRz162WAU-79" vertex="1">
+          <mxGeometry y="22" width="428.25" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-73" value="Last update:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontFamily=Lucida Console;fontColor=#575757;fontStyle=4" parent="WX6EeEbefu8KRz162WAU-79" vertex="1">
+          <mxGeometry width="90.75" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-74" value="Settings" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontFamily=Lucida Console;fontColor=#000000;fontStyle=4" parent="WX6EeEbefu8KRz162WAU-79" vertex="1">
+          <mxGeometry x="371" width="57.25" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-80" value="View report" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontFamily=Lucida Console;fontColor=#000000;fontStyle=4" parent="1" vertex="1">
+          <mxGeometry x="214" y="1075" width="71" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-82" value="notes" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;rounded=1;shadow=0;strokeColor=#808080;fontFamily=Helvetica;fontSize=11;fontColor=default;fillColor=default;" parent="1" vertex="1">
+          <mxGeometry x="158" y="1289" width="515" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-83" value="el frame aparecera al centro en Y y a la derecha/izquierda del todo en X" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;fontFamily=Helvetica;fontColor=default;" parent="WX6EeEbefu8KRz162WAU-82" vertex="1">
+          <mxGeometry y="30" width="515" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-84" value="se pondra sobre todo (z position)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;fontFamily=Helvetica;fontColor=default;" parent="WX6EeEbefu8KRz162WAU-82" vertex="1">
+          <mxGeometry y="60" width="515" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-85" value="talvez incluir un elemento o atajo de teclado para cerra el popup y cuando se active se pondra en el tag y la descripcion los peores casos" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;fontFamily=Helvetica;fontColor=default;" parent="WX6EeEbefu8KRz162WAU-82" vertex="1">
+          <mxGeometry y="90" width="515" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-86" value="que el textarea de la descripcion tenga autocompletado en español e ingles y que recolecte las palabras mas utilizadas hasta el momento para luego mostrarlas mas abajo" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;fontFamily=Helvetica;fontColor=default;" parent="WX6EeEbefu8KRz162WAU-82" vertex="1">
+          <mxGeometry y="120" width="515" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-87" value="que cuando se seleccione una opcion en el tag, se muestre un template en la descripcion para que los datos sean mas precisos" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;fontFamily=Helvetica;fontColor=default;" parent="WX6EeEbefu8KRz162WAU-82" vertex="1">
+          <mxGeometry y="150" width="515" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-88" value="" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=#36393d;fontFamily=Helvetica;fontSize=11;fillColor=#eeeeee;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" vertex="1">
+          <mxGeometry x="898" y="989" width="548" height="433" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-89" value="" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;strokeColor=#808080;fontFamily=Helvetica;fontSize=11;fontColor=default;fillColor=default;" parent="1" vertex="1">
+          <mxGeometry x="898" y="989" width="70" height="433" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-90" value="day" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;strokeColor=#808080;fontFamily=Helvetica;fontSize=11;fontColor=default;fillColor=default;" parent="1" vertex="1">
+          <mxGeometry x="908" y="1012" width="50" height="43" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-91" value="week" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;strokeColor=#808080;fontFamily=Helvetica;fontSize=11;fontColor=default;fillColor=default;" parent="1" vertex="1">
+          <mxGeometry x="908" y="1081" width="50" height="43" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-92" value="month" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;strokeColor=#808080;fontFamily=Helvetica;fontSize=11;fontColor=default;fillColor=default;" parent="1" vertex="1">
+          <mxGeometry x="908" y="1150" width="50" height="43" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-93" value="x" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;strokeColor=#808080;fontFamily=Helvetica;fontSize=11;fontColor=default;fillColor=default;" parent="1" vertex="1">
+          <mxGeometry x="908" y="1367" width="50" height="43" as="geometry" />
+        </mxCell>
+        <mxCell id="WX6EeEbefu8KRz162WAU-94" value="cuando se modifique la hora a la que aparecera el popup, en minimo sera de 30 min(podria reducirce hasta 20 min) y un maximo de 1.30 min, solo se aceptaran minumos multiplos de 5" style="whiteSpace=wrap;html=1;rounded=1;shadow=0;strokeColor=#808080;fontFamily=Helvetica;fontSize=11;fontColor=default;fillColor=default;arcSize=0;" parent="1" vertex="1">
+          <mxGeometry x="1005" y="1485" width="388.5" height="67" as="geometry" />
+        </mxCell>
+        <mxCell id="SWigj1dO-32BlHNll4bW-15" value="" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=#36393d;fontFamily=Helvetica;fontSize=11;fillColor=#eeeeee;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" vertex="1">
+          <mxGeometry x="131.25" y="1575" width="392.75" height="268" as="geometry" />
+        </mxCell>
+        <mxCell id="SWigj1dO-32BlHNll4bW-16" value="v2" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;strokeColor=#001DBC;fontFamily=Helvetica;fontSize=11;fillColor=#0050ef;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="129.25" y="1535" width="397.75" height="31" as="geometry" />
+        </mxCell>
+        <mxCell id="SWigj1dO-32BlHNll4bW-17" value="SAVE(ctrl + shift + s)" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;fontFamily=Lucida Console;fontSize=15;arcSize=0;fontStyle=0" parent="1" vertex="1">
+          <mxGeometry x="150.25" y="1782" width="351.75" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="SWigj1dO-32BlHNll4bW-18" value="tema:&amp;nbsp;&lt;br&gt;subtema:&lt;br&gt;descripcion:&lt;br&gt;metodo: apuntes, videos, lectura, etc..." style="rounded=0;whiteSpace=wrap;html=1;shadow=0;strokeColor=#212121;fontFamily=Verdana;fontSize=11;fillColor=#ebeaea;strokeWidth=1;glass=0;fontColor=#333333;align=left;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="151.25" y="1685" width="350.75" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="SWigj1dO-32BlHNll4bW-19" value="Description:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontFamily=Lucida Console;fontColor=#000000;fontStyle=4" parent="1" vertex="1">
+          <mxGeometry x="150.25" y="1650" width="109.5" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="SWigj1dO-32BlHNll4bW-27" value="View report" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontFamily=Lucida Console;fontColor=#000000;fontStyle=4" parent="1" vertex="1">
+          <mxGeometry x="151.25" y="1760" width="71" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="SWigj1dO-32BlHNll4bW-26" value="Settings" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontFamily=Lucida Console;fontColor=#000000;fontStyle=4" parent="1" vertex="1">
+          <mxGeometry x="444" y="1761" width="57.25" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="SWigj1dO-32BlHNll4bW-28" value="" style="group" parent="1" vertex="1" connectable="0">
+          <mxGeometry x="153.25" y="1584" width="349" height="47" as="geometry" />
+        </mxCell>
+        <mxCell id="SWigj1dO-32BlHNll4bW-24" value="Tag: Studing - Description: Estoy estudiando memory manamenget" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;strokeColor=#757575;fontFamily=Lucida Console;fontSize=8;fillColor=#E6E6E6;strokeWidth=1;glass=0;fontColor=#333333;align=left;verticalAlign=top;" parent="SWigj1dO-32BlHNll4bW-28" vertex="1">
+          <mxGeometry y="22" width="349" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="SWigj1dO-32BlHNll4bW-25" value="Last update:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontFamily=Lucida Console;fontColor=#575757;fontStyle=4" parent="SWigj1dO-32BlHNll4bW-28" vertex="1">
+          <mxGeometry width="90.75" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="7HgrBJgZmtoypeQ3cqZB-1" value="" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=#36393d;fontFamily=Helvetica;fontSize=11;fillColor=#eeeeee;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" vertex="1">
+          <mxGeometry x="407" y="2015" width="391" height="241" as="geometry" />
+        </mxCell>
+        <mxCell id="7HgrBJgZmtoypeQ3cqZB-2" value="v3" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;strokeColor=#001DBC;fontFamily=Helvetica;fontSize=11;fillColor=#0050ef;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="405" y="1975" width="394" height="31" as="geometry" />
+        </mxCell>
+        <mxCell id="7HgrBJgZmtoypeQ3cqZB-4" value="tema:&amp;nbsp;&lt;br&gt;subtema:&lt;br&gt;descripcion:&lt;br&gt;metodo: apuntes, videos, lectura, etc..." style="rounded=0;whiteSpace=wrap;html=1;shadow=0;strokeColor=#212121;fontFamily=Verdana;fontSize=11;fillColor=#ebeaea;strokeWidth=1;glass=0;fontColor=#333333;align=left;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="427" y="2125" width="350.75" height="84" as="geometry" />
+        </mxCell>
+        <mxCell id="7HgrBJgZmtoypeQ3cqZB-5" value="Description:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontFamily=Lucida Console;fontColor=#000000;fontStyle=4" parent="1" vertex="1">
+          <mxGeometry x="429" y="2098.5" width="96" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="7HgrBJgZmtoypeQ3cqZB-6" value="View report" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontFamily=Lucida Console;fontStyle=0;fillColor=#18141D;fontColor=#F0F0F0;strokeColor=none;" parent="1" vertex="1">
+          <mxGeometry x="425" y="2223" width="80" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="7HgrBJgZmtoypeQ3cqZB-7" value="Settings" style="text;html=1;strokeColor=none;fillColor=#18141D;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontFamily=Lucida Console;fontColor=#F0F0F0;fontStyle=0" parent="1" vertex="1">
+          <mxGeometry x="719.75" y="2223" width="57.25" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="7HgrBJgZmtoypeQ3cqZB-8" value="" style="group" parent="1" vertex="1" connectable="0">
+          <mxGeometry x="429" y="2024" width="349" height="47" as="geometry" />
+        </mxCell>
+        <mxCell id="7HgrBJgZmtoypeQ3cqZB-9" value="Tag: Studing - Description: Estoy estudiando memory manamenget" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;strokeColor=#757575;fontFamily=Lucida Console;fontSize=8;fillColor=#E6E6E6;strokeWidth=1;glass=0;fontColor=#333333;align=left;verticalAlign=top;" parent="7HgrBJgZmtoypeQ3cqZB-8" vertex="1">
+          <mxGeometry y="22" width="349" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="7HgrBJgZmtoypeQ3cqZB-10" value="Last update:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontFamily=Lucida Console;fontColor=#575757;fontStyle=4" parent="7HgrBJgZmtoypeQ3cqZB-8" vertex="1">
+          <mxGeometry width="90.75" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="7HgrBJgZmtoypeQ3cqZB-11" value="Save (ctrl + s)" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontFamily=Lucida Console;fontStyle=0;fillColor=#18141D;fontColor=#F0F0F0;strokeColor=none;" parent="1" vertex="1">
+          <mxGeometry x="523" y="2223" width="176" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="7HgrBJgZmtoypeQ3cqZB-12" value="Tag:" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontFamily=Lucida Console;fontColor=#000000;fontStyle=0;horizontal=1;" parent="1" vertex="1">
+          <mxGeometry x="634.5" y="2101" width="30.5" height="15" as="geometry" />
+        </mxCell>
+        <mxCell id="7HgrBJgZmtoypeQ3cqZB-13" value="Studing" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;fontFamily=Helvetica;fontSize=11;arcSize=0;fillColor=#18141d;strokeColor=#4D4D4D;" parent="1" vertex="1">
+          <mxGeometry x="673" y="2098" width="104" height="21" as="geometry" />
+        </mxCell>
+        <mxCell id="mih4M3HvnCbY8bzuzFZU-1" value="" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=#36393d;fontFamily=Helvetica;fontSize=11;fillColor=#eeeeee;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="1">
+          <mxGeometry x="980" y="1867" width="471" height="184" as="geometry" />
+        </mxCell>
+        <mxCell id="mih4M3HvnCbY8bzuzFZU-2" value="v4" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;strokeColor=#001DBC;fontFamily=Helvetica;fontSize=11;fillColor=#0050ef;fontColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="977" y="1804" width="474" height="31" as="geometry" />
+        </mxCell>
+        <mxCell id="mih4M3HvnCbY8bzuzFZU-4" value="tema:&amp;nbsp;&lt;br style=&quot;font-size: 10px;&quot;&gt;subtema:&lt;br style=&quot;font-size: 10px;&quot;&gt;descripcion:&lt;br style=&quot;font-size: 10px;&quot;&gt;metodo: apuntes, videos, lectura, etc..." style="rounded=0;whiteSpace=wrap;html=1;shadow=0;strokeColor=#616161;fontFamily=Verdana;fontSize=10;fillColor=#ebeaea;strokeWidth=1;glass=0;fontColor=#333333;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="991" y="1903" width="446" height="124" as="geometry" />
+        </mxCell>
+        <mxCell id="mih4M3HvnCbY8bzuzFZU-5" value="Description:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontFamily=Verdana;fontColor=#000000;fontStyle=0" vertex="1" parent="1">
+          <mxGeometry x="991" y="1880" width="78" height="19" as="geometry" />
+        </mxCell>
+        <mxCell id="mih4M3HvnCbY8bzuzFZU-14" value="" style="group;fontSize=10;" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="1284.25" y="1876" width="152.75" height="23" as="geometry" />
+        </mxCell>
+        <mxCell id="mih4M3HvnCbY8bzuzFZU-6" value="Tag:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontFamily=Verdana;fontColor=#000000;fontStyle=0" vertex="1" parent="mih4M3HvnCbY8bzuzFZU-14">
+          <mxGeometry y="0.5" width="44.75" height="22.5" as="geometry" />
+        </mxCell>
+        <mxCell id="mih4M3HvnCbY8bzuzFZU-7" value="Studing" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;fontFamily=Helvetica;fontSize=11;arcSize=0;fillColor=#A1A5BF;strokeColor=#4D4D4D;" vertex="1" parent="mih4M3HvnCbY8bzuzFZU-14">
+          <mxGeometry x="44.75" width="89.5" height="23" as="geometry" />
+        </mxCell>
+        <mxCell id="mih4M3HvnCbY8bzuzFZU-8" value="..." style="rounded=1;whiteSpace=wrap;html=1;shadow=0;fontFamily=Helvetica;fontSize=11;arcSize=0;strokeColor=#4D4D4D;" vertex="1" parent="mih4M3HvnCbY8bzuzFZU-14">
+          <mxGeometry x="134.25" width="18.5" height="23" as="geometry" />
+        </mxCell>
+        <mxCell id="mih4M3HvnCbY8bzuzFZU-16" value="" style="rounded=0;labelBorderColor=none;fontColor=default;html=1;fontSize=10;fontFamily=Verdana;strokeColor=none;fillColor=#bdbdbd;" vertex="1" parent="1">
+          <mxGeometry x="991" y="2027" width="447" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="mih4M3HvnCbY8bzuzFZU-11" value="Last update:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontFamily=Verdana;fontColor=#333333;fontStyle=0" vertex="1" parent="1">
+          <mxGeometry x="994" y="2028.5" width="90.75" height="14.5" as="geometry" />
+        </mxCell>
+        <mxCell id="mih4M3HvnCbY8bzuzFZU-17" value="" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=#36393d;fontFamily=Helvetica;fontSize=11;fillColor=#eeeeee;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="1">
+          <mxGeometry x="943" y="2211" width="413" height="165" as="geometry" />
+        </mxCell>
+        <mxCell id="mih4M3HvnCbY8bzuzFZU-18" value="v4.1" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;strokeColor=#001DBC;fontFamily=Helvetica;fontSize=11;fillColor=#0050ef;fontColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="943" y="2167" width="415" height="31" as="geometry" />
+        </mxCell>
+        <mxCell id="mih4M3HvnCbY8bzuzFZU-19" value="tema:&amp;nbsp;&lt;br style=&quot;font-size: 10px;&quot;&gt;subtema:&lt;br style=&quot;font-size: 10px;&quot;&gt;descripcion:&lt;br style=&quot;font-size: 10px;&quot;&gt;metodo: apuntes, videos, lectura, etc..." style="rounded=0;whiteSpace=wrap;html=1;shadow=0;strokeColor=#616161;fontFamily=Verdana;fontSize=10;fillColor=#ebeaea;strokeWidth=1;glass=0;fontColor=#333333;align=left;verticalAlign=top;spacingLeft=6;" vertex="1" parent="1">
+          <mxGeometry x="954" y="2241" width="390" height="124" as="geometry" />
+        </mxCell>
+        <mxCell id="mih4M3HvnCbY8bzuzFZU-25" value="" style="rounded=0;labelBorderColor=none;fontColor=default;html=1;fontSize=10;fontFamily=Verdana;strokeColor=none;fillColor=#bdbdbd;" vertex="1" parent="1">
+          <mxGeometry x="954" y="2220" width="391" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="mih4M3HvnCbY8bzuzFZU-26" value="Last update:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontFamily=Verdana;fontColor=#333333;fontStyle=0" vertex="1" parent="1">
+          <mxGeometry x="1093" y="2220.5" width="90.75" height="14.5" as="geometry" />
+        </mxCell>
+        <mxCell id="mih4M3HvnCbY8bzuzFZU-20" value="Description:&amp;nbsp; &amp;nbsp; (12:03:22)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontFamily=Helvetica;fontColor=#000000;fontStyle=0" vertex="1" parent="1">
+          <mxGeometry x="954" y="2220" width="146" height="15" as="geometry" />
+        </mxCell>
+        <mxCell id="mih4M3HvnCbY8bzuzFZU-22" value="Tag:&amp;nbsp;Studing&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;v" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontFamily=Helvetica;fontColor=#000000;fontStyle=0" vertex="1" parent="1">
+          <mxGeometry x="1258" y="2221" width="86" height="15" as="geometry" />
+        </mxCell>
+        <mxCell id="mih4M3HvnCbY8bzuzFZU-28" value="" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=#36393d;fontFamily=Helvetica;fontSize=11;fillColor=#eeeeee;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="1">
+          <mxGeometry x="943" y="2511" width="413" height="165" as="geometry" />
+        </mxCell>
+        <mxCell id="mih4M3HvnCbY8bzuzFZU-29" value="v4.2" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;strokeColor=#001DBC;fontFamily=Helvetica;fontSize=11;fillColor=#0050ef;fontColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="943" y="2467" width="415" height="31" as="geometry" />
+        </mxCell>
+        <mxCell id="mih4M3HvnCbY8bzuzFZU-30" value="tema:&amp;nbsp;&lt;br style=&quot;font-size: 10px;&quot;&gt;subtema:&lt;br style=&quot;font-size: 10px;&quot;&gt;descripcion:&lt;br style=&quot;font-size: 10px;&quot;&gt;metodo: apuntes, videos, lectura, etc..." style="rounded=0;whiteSpace=wrap;html=1;shadow=0;strokeColor=#616161;fontFamily=Verdana;fontSize=10;fillColor=#ebeaea;strokeWidth=1;glass=0;fontColor=#333333;align=left;verticalAlign=top;spacingLeft=6;" vertex="1" parent="1">
+          <mxGeometry x="954" y="2541" width="390" height="124" as="geometry" />
+        </mxCell>
+        <mxCell id="mih4M3HvnCbY8bzuzFZU-31" value="" style="rounded=0;labelBorderColor=none;fontColor=default;html=1;fontSize=10;fontFamily=Verdana;strokeColor=none;fillColor=#bdbdbd;" vertex="1" parent="1">
+          <mxGeometry x="954" y="2520" width="391" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="mih4M3HvnCbY8bzuzFZU-33" value="&amp;nbsp;v&amp;nbsp; (12:03:22)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontFamily=Helvetica;fontColor=#000000;fontStyle=0" vertex="1" parent="1">
+          <mxGeometry x="954" y="2520" width="98" height="15" as="geometry" />
+        </mxCell>
+        <mxCell id="mih4M3HvnCbY8bzuzFZU-34" value="Tag:&amp;nbsp;Studing&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;v" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontFamily=Helvetica;fontColor=#000000;fontStyle=0" vertex="1" parent="1">
+          <mxGeometry x="1258" y="2520" width="86" height="15" as="geometry" />
+        </mxCell>
+        <mxCell id="mih4M3HvnCbY8bzuzFZU-35" value="-agregar un bookmark&lt;br&gt;-hacer los lados se ajusten segun el texto&lt;br&gt;-hacer que no se guarde si no hay nada en el textarea&lt;br&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;-hacer que no se pueda editar los textos del template&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;-saber el numero y fecha del historial cuando se lo llama&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;-mejorar los atajos de teclado&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;-salvar el texto del textarea si se navega por el historial&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;-opcion para poner los templates automaticamente&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;-poder llamar al popup con un atajo de teclado en windows&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;-poder guardar varias descripciones cuando se use la palabra clave :till :then&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;-cuando se navega por el historial poner automaticamente el tag correspondiente&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;-que windows no cree una notificacion cada vez que aparece el popup&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;-poner el tiempo restante en aparecer el popup en el icono de la aplicacion de la task bar&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;-crear un bookmark para descripcion y ponerlo en template y crear un keyboard para ese template y acceder a los bookmarks&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;-atajos de teclado para vim&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;-poner un &quot;tag comun a esta hora&quot; o un &quot;tags usados en las ultimas 3 o 5 horas&quot;&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="937" y="2682" width="450" height="322" as="geometry" />
+        </mxCell>
+        <mxCell id="mih4M3HvnCbY8bzuzFZU-36" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=data:image/png,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;" vertex="1" parent="1">
+          <mxGeometry x="294.99684210526334" y="2474" width="462" height="295" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="Page-1" id="809RStWlohQ3-12yxadR">
+    <mxGraphModel dx="1748" dy="1144" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="6000" pageHeight="6000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="zNLUCi5WK5RYkxZkkCba-1" value="Description" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#808080;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="127" y="236" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="zNLUCi5WK5RYkxZkkCba-4" value="Description" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=#808080;fontFamily=Helvetica;fontSize=11;fontColor=default;fillColor=default;" parent="1" vertex="1">
+          <mxGeometry x="332" y="480" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="zNLUCi5WK5RYkxZkkCba-5" value="Save" style="ellipse;whiteSpace=wrap;html=1;rounded=1;shadow=1;strokeColor=#808080;fontFamily=Helvetica;fontSize=11;fontColor=default;fillColor=default;" parent="1" vertex="1">
+          <mxGeometry x="582" y="480" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="BCrPengTg6pvyps85KCS-1" value="abrir popup automaticamente cada x minutos" style="whiteSpace=wrap;html=1;rounded=1;shadow=0;strokeColor=#314354;fontFamily=Helvetica;fontSize=11;fontColor=#ffffff;fillColor=#647687;" parent="1" vertex="1">
+          <mxGeometry x="456" y="863" width="195" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="BCrPengTg6pvyps85KCS-2" value="popup se activara automaticamente cuando la pantalla esta encendida" style="whiteSpace=wrap;html=1;rounded=1;shadow=0;strokeColor=#314354;fontFamily=Helvetica;fontSize=11;fontColor=#ffffff;fillColor=#647687;" parent="1" vertex="1">
+          <mxGeometry x="419" y="797" width="195" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="BCrPengTg6pvyps85KCS-3" value="popup obtendra el ultimo dato sobre el tag y description y lo mostrara en el apartado de last update" style="whiteSpace=wrap;html=1;rounded=1;shadow=0;strokeColor=#005700;fontFamily=Helvetica;fontSize=11;fontColor=#ffffff;fillColor=#008a00;" parent="1" vertex="1">
+          <mxGeometry x="530" y="941" width="280" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="BCrPengTg6pvyps85KCS-4" value="el boton save del popup, reiniciara el temporizador, obtendra la informacion de tag y description, luego cerrara el popup" style="whiteSpace=wrap;html=1;rounded=1;shadow=0;strokeColor=#005700;fontFamily=Helvetica;fontSize=11;fontColor=#ffffff;fillColor=#008a00;" parent="1" vertex="1">
+          <mxGeometry x="651" y="1017" width="307" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="5HFmrUTO-LnRgoNXd6n--1" value="List" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;rounded=1;shadow=1;strokeColor=#808080;fontFamily=Helvetica;fontSize=11;fontColor=default;fillColor=default;" parent="1" vertex="1">
+          <mxGeometry x="322" y="1086" width="826" height="630" as="geometry" />
+        </mxCell>
+        <mxCell id="5HFmrUTO-LnRgoNXd6n--2" value="poner el temporizador" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;fontFamily=Helvetica;fontColor=#009900;" parent="5HFmrUTO-LnRgoNXd6n--1" vertex="1">
+          <mxGeometry y="30" width="826" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="5HFmrUTO-LnRgoNXd6n--3" value="agregar el atajo de teclado para cerrar la ventana" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;fontFamily=Helvetica;fontColor=#009900;" parent="5HFmrUTO-LnRgoNXd6n--1" vertex="1">
+          <mxGeometry y="60" width="826" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="5HFmrUTO-LnRgoNXd6n--22" value="setear el tiempo que aparecera el popup desde el mainframe" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;fontFamily=Helvetica;fontColor=#009900;" parent="5HFmrUTO-LnRgoNXd6n--1" vertex="1">
+          <mxGeometry y="90" width="826" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="5HFmrUTO-LnRgoNXd6n--4" value="agregar evento para los label y que redireccionen al mainFrame" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;fontFamily=Helvetica;fontColor=#9933FF;" parent="5HFmrUTO-LnRgoNXd6n--1" vertex="1">
+          <mxGeometry y="120" width="826" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="5HFmrUTO-LnRgoNXd6n--5" value="remover la barra del popup" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;fontFamily=Helvetica;fontColor=#009900;" parent="5HFmrUTO-LnRgoNXd6n--1" vertex="1">
+          <mxGeometry y="150" width="826" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="5HFmrUTO-LnRgoNXd6n--6" value="posicionar el popup al lado izquierdo central del monitor" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;fontFamily=Helvetica;fontColor=#009900;" parent="5HFmrUTO-LnRgoNXd6n--1" vertex="1">
+          <mxGeometry y="180" width="826" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="5HFmrUTO-LnRgoNXd6n--7" value="crear el mainFrame donde estara todas las configuraciones y estadisticas del popup" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;fontFamily=Helvetica;fontColor=#009900;" parent="5HFmrUTO-LnRgoNXd6n--1" vertex="1">
+          <mxGeometry y="210" width="826" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="5HFmrUTO-LnRgoNXd6n--8" value="hacer que el comboBox sea customizable en el mainFrame" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;fontFamily=Helvetica;fontColor=default;" parent="5HFmrUTO-LnRgoNXd6n--1" vertex="1">
+          <mxGeometry y="240" width="826" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="5HFmrUTO-LnRgoNXd6n--9" value="refactorizacion basica al codigo" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;fontFamily=Helvetica;fontColor=#009900;" parent="5HFmrUTO-LnRgoNXd6n--1" vertex="1">
+          <mxGeometry y="270" width="826" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="5HFmrUTO-LnRgoNXd6n--10" value="refactorizacion avanzada al codigo" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;fontFamily=Helvetica;fontColor=default;" parent="5HFmrUTO-LnRgoNXd6n--1" vertex="1">
+          <mxGeometry y="300" width="826" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="5HFmrUTO-LnRgoNXd6n--15" value="hacer que se pueda scroll en el textarea description" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;fontFamily=Helvetica;fontColor=#009900;" parent="5HFmrUTO-LnRgoNXd6n--1" vertex="1">
+          <mxGeometry y="330" width="826" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="5HFmrUTO-LnRgoNXd6n--17" value="hacer que la app se inicie automaticamente cuando se enciende la computadora" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;fontFamily=Helvetica;fontColor=default;" parent="5HFmrUTO-LnRgoNXd6n--1" vertex="1">
+          <mxGeometry y="360" width="826" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="5HFmrUTO-LnRgoNXd6n--18" value="hacer que el temporizador del popup se reinicie o apage cuando se apage/hiberne la computadora" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;fontFamily=Helvetica;fontColor=default;" parent="5HFmrUTO-LnRgoNXd6n--1" vertex="1">
+          <mxGeometry y="390" width="826" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="5HFmrUTO-LnRgoNXd6n--21" value="cambiar el nombre de data.csv a history.csv y crear un nuevo archivo .csv que guarde los ultimos 10 reportes para usarlo en readLastLine" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;fontFamily=Helvetica;fontColor=default;" parent="5HFmrUTO-LnRgoNXd6n--1" vertex="1">
+          <mxGeometry y="420" width="826" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="5HFmrUTO-LnRgoNXd6n--19" value="Error: en los textfields, cuando el texto transpasa el extremo derecho de los textfields" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;fontFamily=Helvetica;fontColor=#009900;" parent="5HFmrUTO-LnRgoNXd6n--1" vertex="1">
+          <mxGeometry y="450" width="826" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="5HFmrUTO-LnRgoNXd6n--20" value="Error: hacer algo con el saltado de linea (\n) para que no afecte al leer el texto para el text last update. talvez poner texto del description en corchetes y que se lee el texto solo si la linea no incluye un corchete final o algo asi" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;fontFamily=Helvetica;fontColor=#009900;" parent="5HFmrUTO-LnRgoNXd6n--1" vertex="1">
+          <mxGeometry y="480" width="826" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="5HFmrUTO-LnRgoNXd6n--11" value="agregar fecha y hora real al data.csv" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;fontFamily=Helvetica;fontColor=#009900;" parent="5HFmrUTO-LnRgoNXd6n--1" vertex="1">
+          <mxGeometry y="510" width="826" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="5HFmrUTO-LnRgoNXd6n--12" value="recolectar el texto del tag y descripcion y ponerlos en el data.csv" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;fontFamily=Helvetica;fontColor=#009900;" parent="5HFmrUTO-LnRgoNXd6n--1" vertex="1">
+          <mxGeometry y="540" width="826" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="5HFmrUTO-LnRgoNXd6n--13" value="hacer que el popup se cierre cuando se presione el boton save" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;fontFamily=Helvetica;fontColor=#009900;" parent="5HFmrUTO-LnRgoNXd6n--1" vertex="1">
+          <mxGeometry y="570" width="826" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="5HFmrUTO-LnRgoNXd6n--14" value="leer la ultima linea del data.csv y organizarlo para ponerlo en el textfield LastUpdate" style="text;strokeColor=none;fillColor=default;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;fontFamily=Helvetica;fontColor=#009900;fontStyle=0" parent="5HFmrUTO-LnRgoNXd6n--1" vertex="1">
+          <mxGeometry y="600" width="826" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
