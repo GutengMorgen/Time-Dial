@@ -1,6 +1,7 @@
 package com.gutengmorgen.TimeDial.extras;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.gutengmorgen.TimeDial.parsing.ParsingManager;
@@ -18,25 +19,23 @@ public class MyTags {
 		this.setTemplateContent(templateContent);
 	}
 
-	public static List<String> readLines() {
-		List<String> lines = new ArrayList<>();
-
-		return lines;
-	}
-	
-	public static List<MyTags> readAllLines(){
+	public static List<MyTags> readAllLines() {
 		List<MyTags> list = new ArrayList<>();
 		for (String string : ParsingManager.readLines()) {
 			String[] split = string.split(ParsingManager.spliter);
-			list.add(new MyTags(split[0], split));
+
+			// Create a new array without the first element (index 0)
+			String[] splitWithoutFirstElement = Arrays.copyOfRange(split, 1, split.length);
+
+			list.add(new MyTags(split[0], splitWithoutFirstElement));
 		}
 		return list;
 	}
 
 	public MyTags defaultLine() {
-		return new MyTags("Study", new String[] {"Resource:","Theme:","Description"});
+		return new MyTags("Study", new String[] { "Resource:", "Theme:", "Description" });
 	}
-	
+
 	public String getTagName() {
 		return tagName;
 	}
@@ -52,7 +51,7 @@ public class MyTags {
 	public void setTemplateContent(String[] templateContent) {
 		this.templateContent = templateContent;
 	}
-	
+
 	@Override
 	public String toString() {
 		return tagName;
