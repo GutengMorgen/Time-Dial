@@ -3,52 +3,63 @@ package com.gutengmorgen.TimeDial;
 import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
 import javax.swing.UIManager;
 
+import com.gutengmorgen.TimeDial.extras.MenuOptions;
+import com.gutengmorgen.TimeDial.extras.MyTags;
 import com.gutengmorgen.TimeDial.extras.ShortcutManager;
 
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 import java.awt.GridBagConstraints;
-import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 import javax.swing.JLabel;
+import javax.swing.JMenuItem;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
 
-import javax.swing.border.Border;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.LineBorder;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.MouseInputAdapter;
 
 public class Popup extends JDialog {
-
 	private static final long serialVersionUID = 1L;
+
 	private final JPanel content = new JPanel();
 	private final GridBagConstraints cons = new GridBagConstraints();
 	private int rowIndex = 0;
 	private JPanel center;
 	private GridBagLayout gbl_center = new GridBagLayout();
 	private List<JTextField> listComp = new ArrayList<>();
+	private JLabel tagName;
+	private MyTags myTags = new MyTags();
 
 	public static void main(String[] args) {
-		try {
-			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-			Popup dialog = new Popup();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				try {
+					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+					Popup dialog = new Popup();
+					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+					dialog.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 	}
 
 	public Popup() {
-		setAlwaysOnTop(true);
+//		setAlwaysOnTop(true);
 		setUndecorated(true);
 		setBounds(5, 5, 450, 160);
 		setContentPane(content);
@@ -89,6 +100,8 @@ public class Popup extends JDialog {
 		gbc_timelbl.gridy = 0;
 		bar.add(timelbl, gbc_timelbl);
 
+//		PopupMenu popupMenu = new PopupMenu(this, MyTags.readLines(), tagName);
+
 		JLabel taglbl = new JLabel("Tag:");
 		GridBagConstraints gbc_taglbl = new GridBagConstraints();
 		gbc_taglbl.anchor = GridBagConstraints.WEST;
@@ -97,7 +110,7 @@ public class Popup extends JDialog {
 		gbc_taglbl.gridy = 0;
 		bar.add(taglbl, gbc_taglbl);
 
-		JLabel tagName = new JLabel("Study");
+		tagName = new JLabel();
 		GridBagConstraints gbc_tagName = new GridBagConstraints();
 		gbc_tagName.anchor = GridBagConstraints.WEST;
 		gbc_tagName.insets = new Insets(0, 0, 0, 5);
@@ -105,18 +118,31 @@ public class Popup extends JDialog {
 		gbc_tagName.gridy = 0;
 		bar.add(tagName, gbc_tagName);
 
+		
 		JLabel navTags = new JLabel("v");
 		GridBagConstraints gbc_navTags = new GridBagConstraints();
 		gbc_navTags.gridx = 5;
 		gbc_navTags.gridy = 0;
 		bar.add(navTags, gbc_navTags);
+		
+		MenuOptions menuOptions = new MenuOptions(this, navTags);
+		navTags.addMouseListener(new MouseInputAdapter() {
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+//				popupMenu.show(navTags, 0, 0);
+				System.out.println("hello navtahs");
+				navTags.requestFocus();
+				menuOptions.show();
+			}
+		});
 
 		center = new JPanel();
 		center.setBorder(null);
 		content.add(center, BorderLayout.CENTER);
 		center.setLayout(gbl_center);
 
-		autoFill();
+		autoFill(myTags.defaultLine());
 		closeAutoFill();
 	}
 
@@ -133,23 +159,26 @@ public class Popup extends JDialog {
 	}
 
 	public void saveClose() {
-
-		if (checkText()) {
-			this.dispose();
-		}
+//		if (checkText()) {
+		this.dispose();
+//		}
 	}
 
-	private void autoFill() {
+	public void autoFill(MyTags myTags) {
+		tagName.setText(myTags.getTagName());
 
-		for (int i = 0; i < 5; i++) {
+		// FIXME: arreglar esto?
+		center.removeAll();
+		center.revalidate();
+		center.repaint();
+		for (String content : myTags.getTemplateContent()) {
 			JTextField textField = new JTextField(13);
-			textField.setBackground(new Color(243, 243, 243));
+			textField.setBackground(new Color(242, 242, 242));
 			textField.setBorder(new EmptyBorder(5, 5, 5, 5));
 			ShortcutManager.saveClose(this, textField);
-			addComponent("source:", textField);
+			addComponent(content, textField);
 			listComp.add(textField);
 		}
-
 		closeAutoFill();
 	}
 
@@ -175,5 +204,34 @@ public class Popup extends JDialog {
 	private void closeAutoFill() {
 		rowIndex = 0;
 		pack();
+	}
+}
+
+class PopupMenu extends JPopupMenu implements ActionListener {
+	private static final long serialVersionUID = 3908068666084151086L;
+	private final JLabel label;
+	private final Popup popup;
+
+	public PopupMenu(Popup popup, List<String> lines, JLabel label) {
+		this.popup = popup;
+		this.label = label;
+
+		for (String string : lines) {
+			JMenuItem item = new JMenuItem(string);
+			item.addActionListener(this);
+			add(item);
+		}
+	}
+
+	public String getDefaultSelect() {
+		return label.getText();
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		JMenuItem item = (JMenuItem) e.getSource();
+		label.setText(item.getText());
+		// TODO: completar esto
+		popup.autoFill(null);
 	}
 }
