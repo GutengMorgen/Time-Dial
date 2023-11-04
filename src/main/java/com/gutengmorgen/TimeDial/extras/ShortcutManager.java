@@ -4,35 +4,46 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 
 import javax.swing.AbstractAction;
-import javax.swing.Action;
 import javax.swing.JComponent;
 import javax.swing.KeyStroke;
 
 import com.gutengmorgen.TimeDial.Popup;
-import com.gutengmorgen.TimeDial.testing;
 
 public class ShortcutManager {
-	public static void saveClose(testing window, JComponent comp) {
-		Action saveAction = new AbstractAction("Save") {
+
+	public static void saveClose(Popup window, JComponent comp) {
+		comp.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_S, KeyEvent.CTRL_DOWN_MASK), "saveAction");
+		comp.getActionMap().put("saveAction", new AbstractAction() {
+			private static final long serialVersionUID = 2265741248768672941L;
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				window.saveClose();
 			}
-		};
-
-		comp.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_S, KeyEvent.CTRL_DOWN_MASK), "saveAction");
-		comp.getActionMap().put("saveAction", saveAction);
+		});
 	}
 	
-	public static void saveClose(Popup window, JComponent comp) {
-		Action saveAction = new AbstractAction("Save") {
+	public static void navTags(Popup popup, JComponent comp) {
+		comp.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, KeyEvent.CTRL_DOWN_MASK), "downTag");
+		comp.getActionMap().put("downTag", new AbstractAction() {
+			private static final long serialVersionUID = -8397549138049913878L;
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				window.saveClose();
+				System.out.println("down");
+				popup.selectedindex(KeyEvent.VK_DOWN);
 			}
-		};
+		});
+		
+		comp.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_UP, KeyEvent.CTRL_DOWN_MASK), "upTag");
+		comp.getActionMap().put("upTag", new AbstractAction() {
+			private static final long serialVersionUID = -6832583136590414379L;
 
-		comp.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_S, KeyEvent.CTRL_DOWN_MASK), "saveAction");
-		comp.getActionMap().put("saveAction", saveAction);
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("up");
+				popup.selectedindex(KeyEvent.VK_UP);
+			}
+		});
 	}
 }

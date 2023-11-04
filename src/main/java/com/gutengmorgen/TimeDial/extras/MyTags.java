@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import com.gutengmorgen.TimeDial.parsing.ParsingManager;
+import com.gutengmorgen.TimeDial.parsing.DataManager;
 
 public class MyTags {
 	private String tagName;
@@ -21,8 +21,8 @@ public class MyTags {
 
 	public static List<MyTags> readAllLines() {
 		List<MyTags> list = new ArrayList<>();
-		for (String string : ParsingManager.readLines()) {
-			String[] split = string.split(ParsingManager.spliter);
+		for (String string : DataManager.readLines()) {
+			String[] split = string.split(DataManager.SPLITBY);
 
 			// Create a new array without the first element (index 0)
 			String[] splitWithoutFirstElement = Arrays.copyOfRange(split, 1, split.length);

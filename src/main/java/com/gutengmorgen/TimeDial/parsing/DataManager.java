@@ -6,9 +6,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
-public class ParsingManager {
+public class DataManager {
 	public static final String TEMPLATE = "Template.csv";
-	public static final String spliter = ";";
+	public static final String SPLITBY = ";";
 
 	public static void main(String[] args) {
 		String data = "src/main/resources/Templates.csv";
