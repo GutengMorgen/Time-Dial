@@ -8,7 +8,8 @@ import java.util.List;
 
 public class DataManager {
 	public static final String TEMPLATE = "Template.csv";
-	public static final String SPLITBY = ";";
+	public static final String SPLITMAJOR = ";";
+	public static final String SPLITMINOR = ",";
 
 	public static void main(String[] args) {
 		String data = "src/main/resources/Templates.csv";
@@ -20,7 +21,7 @@ public class DataManager {
 		}
 	}
 
-	public static List<String> readLines() {
+	public static List<String> readTemplateLines() {
 		try {
 			String data = "src/main/resources/Templates.csv";
 			Path path = Paths.get(data);

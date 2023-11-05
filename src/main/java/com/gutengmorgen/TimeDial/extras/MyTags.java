@@ -1,7 +1,6 @@
 package com.gutengmorgen.TimeDial.extras;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import com.gutengmorgen.TimeDial.parsing.DataManager;
@@ -18,17 +17,14 @@ public class MyTags {
 		this.setTemplateContent(templateContent);
 	}
 
-	public static List<MyTags> readAllLines() {
-		List<MyTags> list = new ArrayList<>();
-		for (String string : DataManager.readLines()) {
-			String[] split = string.split(DataManager.SPLITBY);
-
-			// Create a new array without the first element (index 0)
-			String[] splitWithoutFirstElement = Arrays.copyOfRange(split, 1, split.length);
-
-			list.add(new MyTags(split[0], splitWithoutFirstElement));
+	public static List<MyTags> parsingAllLines(){
+		List<MyTags> l = new ArrayList<>();
+		for (String s : DataManager.readTemplateLines()) {
+			String[] split = s.split(DataManager.SPLITMAJOR);
+			String[] split2 = split[1].split(DataManager.SPLITMINOR);
+			l.add(new MyTags(split[0], split2));
 		}
-		return list;
+		return l;
 	}
 
 	public String getTagName() {

@@ -27,7 +27,7 @@ public class MenuOptions {
 		this.ancestor = ancestor;
 
 		DefaultListModel<MyTags> model = new DefaultListModel<>();
-		model.addAll(MyTags.readAllLines());
+//		model.addAll(MyTags.readAllLines());
 		list = new JList<>(model);
 		list.setBorder(new EmptyBorder(2, 2, 2, 2));
 

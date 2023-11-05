@@ -35,8 +35,10 @@ public class Popup extends JDialog {
 	private GridBagLayout gbl_center = new GridBagLayout();
 	private List<JTextField> listComp = new ArrayList<>();
 	private JLabel tagName;
-	private final DefaultListModel<MyTags> model = new DefaultListModel<>();
-	private int indexModel = 0;
+	private final DefaultListModel<MyTags> modelTag = new DefaultListModel<>();
+	private int indexModelTag = 0;
+	private final DefaultListModel<MyTags> modelHistory = new DefaultListModel<>();
+	private int indexModelHistory = 0;
 
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
@@ -45,7 +47,6 @@ public class Popup extends JDialog {
 				try {
 					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 					Popup dialog = new Popup();
-					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 					dialog.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -55,7 +56,7 @@ public class Popup extends JDialog {
 	}
 
 	public Popup() {
-		model.addAll(MyTags.readAllLines());
+		modelTag.addAll(MyTags.parsingAllLines());
 		setAlwaysOnTop(true);
 		setUndecorated(true);
 		setBounds(5, 5, 450, 160);
@@ -119,7 +120,7 @@ public class Popup extends JDialog {
 		content.add(center, BorderLayout.CENTER);
 		center.setLayout(gbl_center);
 
-		autoFill(model.get(indexModel));
+		autoFill(modelTag.get(indexModelTag));
 		closeAutoFill();
 	}
 
@@ -187,14 +188,14 @@ public class Popup extends JDialog {
 	}
 	
 	public void selectedIndexModel(int event) {
-		if(indexModel == -1)
+		if(indexModelTag == -1)
 			return;
 		
-		if (event == KeyEvent.VK_UP && indexModel > 0)
-			indexModel--;
-		else if (event == KeyEvent.VK_DOWN && model.getSize() > indexModel + 1)
-			indexModel++;
+		if (event == KeyEvent.VK_UP && indexModelTag > 0)
+			indexModelTag--;
+		else if (event == KeyEvent.VK_DOWN && modelTag.getSize() > indexModelTag + 1)
+			indexModelTag++;
 
-		autoFill(model.get(indexModel));
+		autoFill(modelTag.get(indexModelTag));
 	}
 }
