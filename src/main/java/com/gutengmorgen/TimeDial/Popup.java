@@ -1,11 +1,11 @@
 package com.gutengmorgen.TimeDial;
 
-import javax.swing.DefaultListModel;
 import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 
+import com.gutengmorgen.TimeDial.extras.Model;
 import com.gutengmorgen.TimeDial.extras.MyTags;
 import com.gutengmorgen.TimeDial.extras.ShortcutManager;
 import com.gutengmorgen.TimeDial.extras.Template;
@@ -13,8 +13,6 @@ import com.gutengmorgen.TimeDial.extras.Template;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
-import java.util.List;
 import java.awt.GridBagConstraints;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
@@ -22,6 +20,7 @@ import javax.swing.JLabel;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 
 import javax.swing.border.EmptyBorder;
@@ -33,14 +32,10 @@ public class Popup extends JDialog {
 	private final GridBagConstraints cons = new GridBagConstraints();
 	private int rowIndex = 0;
 	private JPanel center;
-	private GridBagLayout gbl_center = new GridBagLayout();
-	private List<JTextField> listComp = new ArrayList<>();
 	private JLabel tagName;
 	private JLabel timelbl;
-	private final DefaultListModel<MyTags> modelTag = new DefaultListModel<>();
-	private int indexModelTag = 0;
-	private final DefaultListModel<DataTemp> modelTemp = new DefaultListModel<>();
-	private int indexModelTemp = 0;
+	private Model<MyTags> modelTag = new Model<>(MyTags.parsingAllLines());
+	private Model<DataTemp> modelTemp = new Model<>(DataTemp.parsingAllLines());
 
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
@@ -58,9 +53,6 @@ public class Popup extends JDialog {
 	}
 
 	public Popup() {
-		modelTag.addAll(MyTags.parsingAllLines());
-		modelTemp.addAll(DataTemp.parsingAllLines());
-		setAlwaysOnTop(true);
 		setUndecorated(true);
 		setBounds(5, 5, 450, 160);
 		setContentPane(content);
@@ -121,20 +113,22 @@ public class Popup extends JDialog {
 		center = new JPanel();
 		center.setBorder(null);
 		content.add(center, BorderLayout.CENTER);
-		center.setLayout(gbl_center);
+		center.setLayout(new GridBagLayout());
 
-		autoFill(modelTag.get(indexModelTag));
+		autoFill(modelTag.getValue());
 		closeAutoFill();
 	}
 
 	public boolean checkText() {
 		boolean flag = false;
 
-		for (JTextField comp : listComp) {
-			if (comp.getText().isBlank())
-				flag = false;
-			else
-				flag = true;
+		for (Component comp : center.getComponents()) {
+			if (comp instanceof JTextField field) {
+				if (field.getText().isBlank())
+					flag = false;
+				else
+					flag = true;
+			}
 		}
 		return flag;
 	}
@@ -146,12 +140,10 @@ public class Popup extends JDialog {
 	}
 
 	public void autoFill(MyTags myTags) {
-		if (!listComp.isEmpty()) {
-			center.removeAll();
-			center.revalidate();
-			center.repaint();
-			listComp.clear();
-		}
+		center.removeAll();
+		center.revalidate();
+		center.repaint();
+
 		tagName.setText(myTags.getName());
 
 		for (Template template : myTags.getTemplates()) {
@@ -160,19 +152,16 @@ public class Popup extends JDialog {
 			field.setBorder(new EmptyBorder(5, 5, 5, 5));
 			ShortcutManager.nav(this, field);
 			addComponent(template.getName(), field);
-			listComp.add(field);
 		}
 		closeAutoFill();
-		listComp.get(0).requestFocus();
+		center.getComponent(1).requestFocus();
 	}
 
 	private void autoFill(DataTemp data) {
-		if (!listComp.isEmpty()) {
-			center.removeAll();
-			center.revalidate();
-			center.repaint();
-			listComp.clear();
-		}
+		center.removeAll();
+		center.revalidate();
+		center.repaint();
+
 		timelbl.setText("from: " + data.getTime());
 		tagName.setText(data.getTag().getName());
 
@@ -183,10 +172,9 @@ public class Popup extends JDialog {
 			field.setText(template.getHold());
 			ShortcutManager.nav(this, field);
 			addComponent(template.getName(), field);
-			listComp.add(field);
 		}
 		closeAutoFill();
-		listComp.get(0).requestFocus();
+		center.getComponent(1).requestFocus();
 	}
 
 	private void addComponent(String name, JComponent comp) {
@@ -212,20 +200,29 @@ public class Popup extends JDialog {
 	}
 
 	public void selectedIndexModel(int event) {
-		if (event == KeyEvent.VK_UP && indexModelTag > 0)
-			indexModelTag--;
-		else if (event == KeyEvent.VK_DOWN && modelTag.getSize() > indexModelTag + 1)
-			indexModelTag++;
+		if (event == KeyEvent.VK_UP)
+			modelTag.reduceIndex();
+		else if (event == KeyEvent.VK_DOWN)
+			modelTag.increaseIndex();
 
-		autoFill(modelTag.get(indexModelTag));
+		autoFill(modelTag.getValue());
 	}
 
 	public void selectedIndexTemp(int event) {
-		if (event == KeyEvent.VK_RIGHT && indexModelTemp > 0)
-			indexModelTemp--;
-		else if (event == KeyEvent.VK_LEFT && modelTemp.getSize() > indexModelTemp + 1)
-			indexModelTemp++;
+		if (event == KeyEvent.VK_RIGHT)
+			modelTemp.reduceIndex();
+		else if (event == KeyEvent.VK_LEFT)
+			modelTemp.increaseIndex();
 
-		autoFill(modelTemp.get(indexModelTemp));
+		autoFill(modelTemp.getValue());
+	}
+
+	public void selectedIndex(int event, Model<?> model) {
+		if (event == KeyEvent.VK_RIGHT || event == KeyEvent.VK_UP) {
+			model.reduceIndex();
+		} else if (event == KeyEvent.VK_LEFT || event == KeyEvent.VK_DOWN) {
+			model.increaseIndex();
+		}
+//		autoFill(model.getValue());
 	}
 }
