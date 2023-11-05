@@ -152,16 +152,15 @@ public class Popup extends JDialog {
 			center.repaint();
 			listComp.clear();
 		}
-		tagName.setText(myTags.getTagName());
+		tagName.setText(myTags.getName());
 
 		for (Template template : myTags.getTemplates()) {
-			JTextField textField = new JTextField();
-			textField.setBackground(new Color(242, 242, 242));
-			textField.setBorder(new EmptyBorder(5, 5, 5, 5));
-			ShortcutManager.saveClose(this, textField);
-			ShortcutManager.nav(this, textField);
-			addComponent(template.getName(), textField);
-			listComp.add(textField);
+			JTextField field = new JTextField();
+			field.setBackground(new Color(242, 242, 242));
+			field.setBorder(new EmptyBorder(5, 5, 5, 5));
+			ShortcutManager.nav(this, field);
+			addComponent(template.getName(), field);
+			listComp.add(field);
 		}
 		closeAutoFill();
 		listComp.get(0).requestFocus();
@@ -174,19 +173,17 @@ public class Popup extends JDialog {
 			center.repaint();
 			listComp.clear();
 		}
-		timelbl.setText(data.getTime());
-		tagName.setText(data.getTagName());
+		timelbl.setText("from: " + data.getTime());
+		tagName.setText(data.getTag().getName());
 
-		//FIXME: arreglar esto, talvez creando una entidad Template
-		for (Template template : data.getTemplates()) {
-			JTextField textField = new JTextField();
-			textField.setBackground(new Color(242, 242, 242));
-			textField.setBorder(new EmptyBorder(5, 5, 5, 5));
-			textField.setText(template.getHold());
-			ShortcutManager.saveClose(this, textField);
-			ShortcutManager.nav(this, textField);
-			addComponent(template.getName(), textField);
-			listComp.add(textField);
+		for (Template template : data.getTag().getTemplates()) {
+			JTextField field = new JTextField();
+			field.setBackground(new Color(242, 242, 242));
+			field.setBorder(new EmptyBorder(5, 5, 5, 5));
+			field.setText(template.getHold());
+			ShortcutManager.nav(this, field);
+			addComponent(template.getName(), field);
+			listComp.add(field);
 		}
 		closeAutoFill();
 		listComp.get(0).requestFocus();
@@ -200,8 +197,7 @@ public class Popup extends JDialog {
 		cons.fill = GridBagConstraints.VERTICAL;
 		cons.anchor = GridBagConstraints.WEST;
 
-		JLabel label = new JLabel(name);
-		center.add(label, cons);
+		center.add(new JLabel(name), cons);
 
 		cons.gridx = 1;
 		cons.weightx = 1.0;
@@ -216,9 +212,6 @@ public class Popup extends JDialog {
 	}
 
 	public void selectedIndexModel(int event) {
-		if (indexModelTag == -1)
-			return;
-
 		if (event == KeyEvent.VK_UP && indexModelTag > 0)
 			indexModelTag--;
 		else if (event == KeyEvent.VK_DOWN && modelTag.getSize() > indexModelTag + 1)
@@ -227,11 +220,7 @@ public class Popup extends JDialog {
 		autoFill(modelTag.get(indexModelTag));
 	}
 
-	//FIXME: Exception in thread "AWT-EventQueue-0" java.lang.ArrayIndexOutOfBoundsException: 4 >= 4
 	public void selectedIndexTemp(int event) {
-		if (indexModelTemp == -1)
-			return;
-
 		if (event == KeyEvent.VK_RIGHT && indexModelTemp > 0)
 			indexModelTemp--;
 		else if (event == KeyEvent.VK_LEFT && modelTemp.getSize() > indexModelTemp + 1)

@@ -15,21 +15,21 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MyTags {
-	private String tagName;
+	private String name;
 	private List<Template> templates;
 
 	public static List<MyTags> parsingAllLines() {
 		List<MyTags> l = new ArrayList<>();
 		for (String s : DataManager.readTemplateLines()) {
-			String[] split = s.split(DataManager.SPLITMAJOR);
-			String[] split2 = split[1].split(DataManager.SPLITMINOR);
-			l.add(new MyTags(split[0], Template.convert(split2)));
+			String[] split = s.split(DataManager.DELIMITER_MAJOR);
+			String[] splitInter = split[1].split(DataManager.DELIMITER_MINOR);
+			l.add(new MyTags(split[0], Template.convert(splitInter, false)));
 		}
 		return l;
 	}
 
 	@Override
 	public String toString() {
-		return tagName;
+		return name;
 	}
 }

@@ -10,8 +10,9 @@ public class DataManager {
 	private static final String DEFAULT = "src/main/resources/";
 	public static final String TEMPLATE = "Templates.csv";
 	public static final String DATATEMP = "dataTemp.csv";
-	public static final String SPLITMAJOR = ";";
-	public static final String SPLITMINOR = ",";
+	public static final String DELIMITER_MAJOR = ";";
+	public static final String DELIMITER_MINOR = ",";
+	public static final String DELIMITER_TEMPLATE = ":";
 
 	public static void main(String[] args) {
 		String data = "src/main/resources/Templates.csv";

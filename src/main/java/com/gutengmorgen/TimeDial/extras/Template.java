@@ -3,6 +3,8 @@ package com.gutengmorgen.TimeDial.extras;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.gutengmorgen.TimeDial.parsing.DataManager;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,13 +18,13 @@ public class Template {
 	private String name;
 	private String hold;
 
-	public static List<Template> convert(String[] names) {
+	public static List<Template> convert(String[] names, boolean split) {
 		List<Template> list = new ArrayList<>();
 		for (String name : names) {
-			String[] split = name.split(":");
-			if (split.length == 2)
-				list.add(new Template(split[0] + ":", split[1]));
-			else 
+			if (split) {
+				String[] sp = name.split(DataManager.DELIMITER_TEMPLATE);
+				list.add(new Template(sp[0] + ":", sp[1]));
+			} else
 				list.add(new Template(name, ""));
 		}
 		return list;
