@@ -9,7 +9,6 @@ import com.gutengmorgen.TimeDial.parsing.DataManager;
 public class MyTags {
 	private String tagName;
 	private String[] templateContent;
-//	private String[] defaultLine = new String[] { "Study", "resource:", "description:" };
 
 	public MyTags() {
 	}
@@ -30,10 +29,6 @@ public class MyTags {
 			list.add(new MyTags(split[0], splitWithoutFirstElement));
 		}
 		return list;
-	}
-
-	public MyTags defaultLine() {
-		return new MyTags("Study", new String[] { "Resource:", "Theme:", "Description" });
 	}
 
 	public String getTagName() {

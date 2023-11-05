@@ -1,6 +1,7 @@
 package com.gutengmorgen.TimeDial.extras;
 
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 import javax.swing.AbstractAction;
@@ -23,27 +24,23 @@ public class ShortcutManager {
 		});
 	}
 	
-	public static void navTags(Popup popup, JComponent comp) {
-		comp.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, KeyEvent.CTRL_DOWN_MASK), "downTag");
-		comp.getActionMap().put("downTag", new AbstractAction() {
-			private static final long serialVersionUID = -8397549138049913878L;
+	public static void nav(Popup popup, JComponent comp ) {
+		comp.addKeyListener(new KeyAdapter() {
 
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("down");
-				popup.selectedindex(KeyEvent.VK_DOWN);
+			public void keyPressed(KeyEvent e) {
+				switch (e.getKeyCode()) {
+				case KeyEvent.VK_UP , KeyEvent.VK_DOWN:
+					popup.selectedIndexModel(e.getKeyCode());
+					break;
+				case KeyEvent.VK_LEFT, KeyEvent.VK_RIGHT:
+					System.out.println("navHistory");
+					break;
+				default:
+					break;
+				}
 			}
-		});
 		
-		comp.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_UP, KeyEvent.CTRL_DOWN_MASK), "upTag");
-		comp.getActionMap().put("upTag", new AbstractAction() {
-			private static final long serialVersionUID = -6832583136590414379L;
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("up");
-				popup.selectedindex(KeyEvent.VK_UP);
-			}
 		});
 	}
 }

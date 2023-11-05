@@ -6,28 +6,24 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 
-import com.gutengmorgen.TimeDial.extras.MenuOptions;
 import com.gutengmorgen.TimeDial.extras.MyTags;
 import com.gutengmorgen.TimeDial.extras.ShortcutManager;
 
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.KeyEvent;
-import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 import java.awt.GridBagConstraints;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.JLabel;
-import javax.swing.JList;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 
 import javax.swing.border.EmptyBorder;
-import javax.swing.event.MouseInputAdapter;
 
 public class Popup extends JDialog {
 	private static final long serialVersionUID = 1L;
@@ -39,10 +35,8 @@ public class Popup extends JDialog {
 	private GridBagLayout gbl_center = new GridBagLayout();
 	private List<JTextField> listComp = new ArrayList<>();
 	private JLabel tagName;
-	private MyTags myTags = new MyTags();
-	public final MenuOptions menuOptions;
 	private final DefaultListModel<MyTags> model = new DefaultListModel<>();
-	private final JList<MyTags> list = new JList<>();
+	private int indexModel = 0;
 
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
@@ -62,8 +56,6 @@ public class Popup extends JDialog {
 
 	public Popup() {
 		model.addAll(MyTags.readAllLines());
-		list.setModel(model);
-		list.setSelectedIndex(0);
 		setAlwaysOnTop(true);
 		setUndecorated(true);
 		setBounds(5, 5, 450, 160);
@@ -75,9 +67,10 @@ public class Popup extends JDialog {
 		bar.setBackground(new Color(225, 225, 225));
 		content.add(bar, BorderLayout.NORTH);
 		GridBagLayout gbl_panel = new GridBagLayout();
-		gbl_panel.columnWidths = new int[] { 22, 104, 76, 28, 70, 22 };
+		//TODO: ajustar estos parametros
+		gbl_panel.columnWidths = new int[] { 22, 104, 76, 28, 70 };
 		gbl_panel.rowHeights = new int[] { 20 };
-		gbl_panel.columnWeights = new double[] { 0.0, 0.0, 1.0, 0.0, 0.0, 0.0 };
+		gbl_panel.columnWeights = new double[] { 0.0, 0.0, 1.0, 0.0, 0.0 };
 		gbl_panel.rowWeights = new double[] { 0.0 };
 		bar.setLayout(gbl_panel);
 
@@ -121,34 +114,16 @@ public class Popup extends JDialog {
 		gbc_tagName.gridy = 0;
 		bar.add(tagName, gbc_tagName);
 
-		JLabel navTags = new JLabel("v");
-		GridBagConstraints gbc_navTags = new GridBagConstraints();
-		gbc_navTags.gridx = 5;
-		gbc_navTags.gridy = 0;
-		bar.add(navTags, gbc_navTags);
-
-		menuOptions = new MenuOptions(this, navTags);
-		// FIXME: poner la lista de mytags en esta clase y pasarla al menuoptions como
-		// parametros
-		navTags.addMouseListener(new MouseInputAdapter() {
-
-			@Override
-			public void mousePressed(MouseEvent e) {
-				navTags.requestFocus();
-				menuOptions.show();
-			}
-		});
-
 		center = new JPanel();
 		center.setBorder(null);
 		content.add(center, BorderLayout.CENTER);
 		center.setLayout(gbl_center);
 
-		autoFill(myTags.defaultLine());
+		autoFill(model.get(indexModel));
 		closeAutoFill();
 	}
 
-	private boolean checkText() {
+	public boolean checkText() {
 		boolean flag = false;
 
 		for (JTextField comp : listComp) {
@@ -163,7 +138,6 @@ public class Popup extends JDialog {
 	public void saveClose() {
 //		if (checkText()) {
 		this.dispose();
-		menuOptions.window.dispose();
 //		}
 	}
 
@@ -174,7 +148,6 @@ public class Popup extends JDialog {
 			center.repaint();
 			listComp.clear();
 		}
-
 		tagName.setText(myTags.getTagName());
 
 		for (String content : myTags.getTemplateContent()) {
@@ -182,7 +155,7 @@ public class Popup extends JDialog {
 			textField.setBackground(new Color(242, 242, 242));
 			textField.setBorder(new EmptyBorder(5, 5, 5, 5));
 			ShortcutManager.saveClose(this, textField);
-			ShortcutManager.navTags(this, textField);
+			ShortcutManager.nav(this, textField);
 			addComponent(content, textField);
 			listComp.add(textField);
 		}
@@ -212,20 +185,16 @@ public class Popup extends JDialog {
 		rowIndex = 0;
 		pack();
 	}
-
-	public void selectedindex(int event) {
-		int index = list.getSelectedIndex();
-		System.out.println("index " + index);
-
-		if (index == -1)
+	
+	public void selectedIndexModel(int event) {
+		if(indexModel == -1)
 			return;
+		
+		if (event == KeyEvent.VK_UP && indexModel > 0)
+			indexModel--;
+		else if (event == KeyEvent.VK_DOWN && model.getSize() > indexModel + 1)
+			indexModel++;
 
-		if (event == KeyEvent.VK_UP && index > 0)
-			index--;
-		else if (event == KeyEvent.VK_DOWN && list.getModel().getSize() > index + 1)
-			index++;
-
-		list.setSelectedIndex(index);
-		autoFill(list.getSelectedValue());
+		autoFill(model.get(indexModel));
 	}
 }
