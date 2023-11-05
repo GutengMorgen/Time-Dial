@@ -34,7 +34,7 @@ public class ShortcutManager {
 					popup.selectedIndexModel(e.getKeyCode());
 					break;
 				case KeyEvent.VK_LEFT, KeyEvent.VK_RIGHT:
-					System.out.println("navHistory");
+					popup.selectedIndexTemp(e.getKeyCode());
 					break;
 				default:
 					break;

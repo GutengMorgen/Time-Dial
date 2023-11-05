@@ -7,7 +7,9 @@ import java.nio.file.Paths;
 import java.util.List;
 
 public class DataManager {
-	public static final String TEMPLATE = "Template.csv";
+	private static final String DEFAULT = "src/main/resources/";
+	public static final String TEMPLATE = "Templates.csv";
+	public static final String DATATEMP = "dataTemp.csv";
 	public static final String SPLITMAJOR = ";";
 	public static final String SPLITMINOR = ",";
 
@@ -23,8 +25,17 @@ public class DataManager {
 
 	public static List<String> readTemplateLines() {
 		try {
-			String data = "src/main/resources/Templates.csv";
-			Path path = Paths.get(data);
+			Path path = Paths.get(DEFAULT + TEMPLATE);
+			return Files.readAllLines(path);
+		} catch (IOException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public static List<String> readDataTempLines(){
+		try {
+			Path path = Paths.get(DEFAULT + DATATEMP);
 			return Files.readAllLines(path);
 		} catch (IOException e) {
 			e.printStackTrace();

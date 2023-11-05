@@ -8,6 +8,7 @@ import javax.swing.UIManager;
 
 import com.gutengmorgen.TimeDial.extras.MyTags;
 import com.gutengmorgen.TimeDial.extras.ShortcutManager;
+import com.gutengmorgen.TimeDial.extras.Template;
 
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -35,10 +36,11 @@ public class Popup extends JDialog {
 	private GridBagLayout gbl_center = new GridBagLayout();
 	private List<JTextField> listComp = new ArrayList<>();
 	private JLabel tagName;
+	private JLabel timelbl;
 	private final DefaultListModel<MyTags> modelTag = new DefaultListModel<>();
 	private int indexModelTag = 0;
-	private final DefaultListModel<MyTags> modelHistory = new DefaultListModel<>();
-	private int indexModelHistory = 0;
+	private final DefaultListModel<DataTemp> modelTemp = new DefaultListModel<>();
+	private int indexModelTemp = 0;
 
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
@@ -57,6 +59,7 @@ public class Popup extends JDialog {
 
 	public Popup() {
 		modelTag.addAll(MyTags.parsingAllLines());
+		modelTemp.addAll(DataTemp.parsingAllLines());
 		setAlwaysOnTop(true);
 		setUndecorated(true);
 		setBounds(5, 5, 450, 160);
@@ -68,7 +71,7 @@ public class Popup extends JDialog {
 		bar.setBackground(new Color(225, 225, 225));
 		content.add(bar, BorderLayout.NORTH);
 		GridBagLayout gbl_panel = new GridBagLayout();
-		//TODO: ajustar estos parametros
+		// TODO: ajustar estos parametros
 		gbl_panel.columnWidths = new int[] { 22, 104, 76, 28, 70 };
 		gbl_panel.rowHeights = new int[] { 20 };
 		gbl_panel.columnWeights = new double[] { 0.0, 0.0, 1.0, 0.0, 0.0 };
@@ -92,7 +95,7 @@ public class Popup extends JDialog {
 		gbc_descriptionlbl.gridy = 0;
 		bar.add(descriptionlbl, gbc_descriptionlbl);
 
-		JLabel timelbl = new JLabel("(12:01:01)");
+		timelbl = new JLabel("(12:01:01)");
 		GridBagConstraints gbc_timelbl = new GridBagConstraints();
 		gbc_timelbl.insets = new Insets(0, 0, 0, 5);
 		gbc_timelbl.gridx = 2;
@@ -151,13 +154,38 @@ public class Popup extends JDialog {
 		}
 		tagName.setText(myTags.getTagName());
 
-		for (String content : myTags.getTemplateContent()) {
+		for (Template template : myTags.getTemplates()) {
 			JTextField textField = new JTextField();
 			textField.setBackground(new Color(242, 242, 242));
 			textField.setBorder(new EmptyBorder(5, 5, 5, 5));
 			ShortcutManager.saveClose(this, textField);
 			ShortcutManager.nav(this, textField);
-			addComponent(content, textField);
+			addComponent(template.getName(), textField);
+			listComp.add(textField);
+		}
+		closeAutoFill();
+		listComp.get(0).requestFocus();
+	}
+
+	private void autoFill(DataTemp data) {
+		if (!listComp.isEmpty()) {
+			center.removeAll();
+			center.revalidate();
+			center.repaint();
+			listComp.clear();
+		}
+		timelbl.setText(data.getTime());
+		tagName.setText(data.getTagName());
+
+		//FIXME: arreglar esto, talvez creando una entidad Template
+		for (Template template : data.getTemplates()) {
+			JTextField textField = new JTextField();
+			textField.setBackground(new Color(242, 242, 242));
+			textField.setBorder(new EmptyBorder(5, 5, 5, 5));
+			textField.setText(template.getHold());
+			ShortcutManager.saveClose(this, textField);
+			ShortcutManager.nav(this, textField);
+			addComponent(template.getName(), textField);
 			listComp.add(textField);
 		}
 		closeAutoFill();
@@ -186,16 +214,29 @@ public class Popup extends JDialog {
 		rowIndex = 0;
 		pack();
 	}
-	
+
 	public void selectedIndexModel(int event) {
-		if(indexModelTag == -1)
+		if (indexModelTag == -1)
 			return;
-		
+
 		if (event == KeyEvent.VK_UP && indexModelTag > 0)
 			indexModelTag--;
 		else if (event == KeyEvent.VK_DOWN && modelTag.getSize() > indexModelTag + 1)
 			indexModelTag++;
 
 		autoFill(modelTag.get(indexModelTag));
+	}
+
+	//FIXME: Exception in thread "AWT-EventQueue-0" java.lang.ArrayIndexOutOfBoundsException: 4 >= 4
+	public void selectedIndexTemp(int event) {
+		if (indexModelTemp == -1)
+			return;
+
+		if (event == KeyEvent.VK_RIGHT && indexModelTemp > 0)
+			indexModelTemp--;
+		else if (event == KeyEvent.VK_LEFT && modelTemp.getSize() > indexModelTemp + 1)
+			indexModelTemp++;
+
+		autoFill(modelTemp.get(indexModelTemp));
 	}
 }
