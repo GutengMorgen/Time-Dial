@@ -5,10 +5,11 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 
-import com.gutengmorgen.TimeDial.extras.Model;
-import com.gutengmorgen.TimeDial.extras.MyTags;
 import com.gutengmorgen.TimeDial.extras.ShortcutManager;
-import com.gutengmorgen.TimeDial.extras.Template;
+import com.gutengmorgen.TimeDial.models.Temporal;
+import com.gutengmorgen.TimeDial.models.Model;
+import com.gutengmorgen.TimeDial.models.Tag;
+import com.gutengmorgen.TimeDial.models.Template;
 
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -34,8 +35,8 @@ public class Popup extends JDialog {
 	private JPanel center;
 	private JLabel tagName;
 	private JLabel timelbl;
-	private Model<MyTags> modelTag = new Model<>(MyTags.parsingAllLines());
-	private Model<DataTemp> modelTemp = new Model<>(DataTemp.parsingAllLines());
+	private Model<Tag> modelTag = new Model<>(Tag.parsingAllLines());
+	private Model<Temporal> modelTemp = new Model<>(Temporal.parsingAllLines());
 
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
@@ -87,7 +88,7 @@ public class Popup extends JDialog {
 		gbc_descriptionlbl.gridy = 0;
 		bar.add(descriptionlbl, gbc_descriptionlbl);
 
-		timelbl = new JLabel("(12:01:01)");
+		timelbl = new JLabel("(12:01:01)"); //TODO: poner el timer aqui
 		GridBagConstraints gbc_timelbl = new GridBagConstraints();
 		gbc_timelbl.insets = new Insets(0, 0, 0, 5);
 		gbc_timelbl.gridx = 2;
@@ -134,12 +135,11 @@ public class Popup extends JDialog {
 	}
 
 	public void saveClose() {
-//		if (checkText()) {
+//		if (checkText())
 		this.dispose();
-//		}
 	}
 
-	public void autoFill(MyTags myTags) {
+	public void autoFill(Tag myTags) {
 		center.removeAll();
 		center.revalidate();
 		center.repaint();
@@ -157,7 +157,7 @@ public class Popup extends JDialog {
 		center.getComponent(1).requestFocus();
 	}
 
-	private void autoFill(DataTemp data) {
+	private void autoFill(Temporal data) {
 		center.removeAll();
 		center.revalidate();
 		center.repaint();

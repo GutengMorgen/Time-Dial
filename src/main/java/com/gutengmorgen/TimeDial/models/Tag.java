@@ -1,4 +1,4 @@
-package com.gutengmorgen.TimeDial.extras;
+package com.gutengmorgen.TimeDial.models;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,16 +14,16 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class MyTags {
+public class Tag {
 	private String name;
 	private List<Template> templates;
 
-	public static List<MyTags> parsingAllLines() {
-		List<MyTags> l = new ArrayList<>();
+	public static List<Tag> parsingAllLines() {
+		List<Tag> l = new ArrayList<>();
 		for (String s : DataManager.readTemplateLines()) {
 			String[] split = s.split(DataManager.DELIMITER_MAJOR);
 			String[] splitInter = split[1].split(DataManager.DELIMITER_MINOR);
-			l.add(new MyTags(split[0], Template.convert(splitInter, false)));
+			l.add(new Tag(split[0], Template.convert(splitInter, false)));
 		}
 		return l;
 	}

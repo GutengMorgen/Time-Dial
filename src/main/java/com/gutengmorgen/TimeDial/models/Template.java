@@ -1,4 +1,4 @@
-package com.gutengmorgen.TimeDial.extras;
+package com.gutengmorgen.TimeDial.models;
 
 import java.util.ArrayList;
 import java.util.List;
