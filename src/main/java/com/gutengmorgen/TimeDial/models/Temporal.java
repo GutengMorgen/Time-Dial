@@ -1,5 +1,7 @@
 package com.gutengmorgen.TimeDial.models;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,8 +17,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Temporal {
-	private String date;
-	private String time;
+	private LocalDateTime dateTime;
 	private Tag tag;
 
 	public static List<Temporal> parsingAllLines() {
@@ -24,8 +25,15 @@ public class Temporal {
 		for (String s : DataManager.readDataTempLines()) {
 			String[] split = s.split(DataManager.DELIMITER_MAJOR);
 			String[] splitInter = split[3].split(DataManager.DELIMITER_MINOR);
-			l.add(new Temporal(split[0], split[1], new Tag(split[2], Template.convert(splitInter, true))));
+			l.add(new Temporal(convertDateTime(split[0], split[1]),
+					new Tag(split[2], Template.convert(splitInter, true))));
 		}
 		return l;
+	}
+
+	public static LocalDateTime convertDateTime(String date, String time) {
+		String text = date + " " + time;
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+		return LocalDateTime.parse(text, formatter);
 	}
 }

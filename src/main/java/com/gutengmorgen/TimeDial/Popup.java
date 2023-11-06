@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 import javax.swing.UIManager;
 
 import com.gutengmorgen.TimeDial.extras.ShortcutManager;
+import com.gutengmorgen.TimeDial.extras.TimerHandler;
 import com.gutengmorgen.TimeDial.models.Temporal;
 import com.gutengmorgen.TimeDial.models.Model;
 import com.gutengmorgen.TimeDial.models.Tag;
@@ -37,6 +38,7 @@ public class Popup extends JDialog {
 	private JLabel timelbl;
 	private Model<Tag> modelTag = new Model<>(Tag.parsingAllLines());
 	private Model<Temporal> modelTemp = new Model<>(Temporal.parsingAllLines());
+	private TimerHandler timerHandler = new TimerHandler();
 
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
@@ -65,49 +67,39 @@ public class Popup extends JDialog {
 		content.add(bar, BorderLayout.NORTH);
 		GridBagLayout gbl_panel = new GridBagLayout();
 		// TODO: ajustar estos parametros
-		gbl_panel.columnWidths = new int[] { 22, 104, 76, 28, 70 };
+		gbl_panel.columnWidths = new int[] { 70, 76, 35, 58 };
 		gbl_panel.rowHeights = new int[] { 20 };
-		gbl_panel.columnWeights = new double[] { 0.0, 0.0, 1.0, 0.0, 0.0 };
+		gbl_panel.columnWeights = new double[] { 0.0, 1.0, 0.0, 0.0 };
 		gbl_panel.rowWeights = new double[] { 0.0 };
 		bar.setLayout(gbl_panel);
-
-		JLabel navHistory = new JLabel("v");
-		navHistory.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		GridBagConstraints gbc_navHistory = new GridBagConstraints();
-		gbc_navHistory.insets = new Insets(0, 0, 0, 5);
-		gbc_navHistory.gridx = 0;
-		gbc_navHistory.gridy = 0;
-		bar.add(navHistory, gbc_navHistory);
 
 		JLabel descriptionlbl = new JLabel("Description:");
 		descriptionlbl.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		GridBagConstraints gbc_descriptionlbl = new GridBagConstraints();
-		gbc_descriptionlbl.anchor = GridBagConstraints.WEST;
 		gbc_descriptionlbl.insets = new Insets(0, 0, 0, 5);
-		gbc_descriptionlbl.gridx = 1;
+		gbc_descriptionlbl.gridx = 0;
 		gbc_descriptionlbl.gridy = 0;
 		bar.add(descriptionlbl, gbc_descriptionlbl);
 
-		timelbl = new JLabel("(12:01:01)"); //TODO: poner el timer aqui
+		timelbl = new JLabel();
+		timerHandler.setClock(timelbl);
 		GridBagConstraints gbc_timelbl = new GridBagConstraints();
 		gbc_timelbl.insets = new Insets(0, 0, 0, 5);
-		gbc_timelbl.gridx = 2;
+		gbc_timelbl.gridx = 1;
 		gbc_timelbl.gridy = 0;
 		bar.add(timelbl, gbc_timelbl);
 
 		JLabel taglbl = new JLabel("Tag:");
 		GridBagConstraints gbc_taglbl = new GridBagConstraints();
-		gbc_taglbl.anchor = GridBagConstraints.WEST;
 		gbc_taglbl.insets = new Insets(0, 0, 0, 5);
-		gbc_taglbl.gridx = 3;
+		gbc_taglbl.gridx = 2;
 		gbc_taglbl.gridy = 0;
 		bar.add(taglbl, gbc_taglbl);
 
 		tagName = new JLabel();
 		GridBagConstraints gbc_tagName = new GridBagConstraints();
 		gbc_tagName.anchor = GridBagConstraints.WEST;
-		gbc_tagName.insets = new Insets(0, 0, 0, 5);
-		gbc_tagName.gridx = 4;
+		gbc_tagName.gridx = 3;
 		gbc_tagName.gridy = 0;
 		bar.add(tagName, gbc_tagName);
 
@@ -117,7 +109,6 @@ public class Popup extends JDialog {
 		center.setLayout(new GridBagLayout());
 
 		autoFill(modelTag.getValue());
-		closeAutoFill();
 	}
 
 	public boolean checkText() {
@@ -145,6 +136,7 @@ public class Popup extends JDialog {
 		center.repaint();
 
 		tagName.setText(myTags.getName());
+		timerHandler.restartClock();
 
 		for (Template template : myTags.getTemplates()) {
 			JTextField field = new JTextField();
@@ -162,7 +154,8 @@ public class Popup extends JDialog {
 		center.revalidate();
 		center.repaint();
 
-		timelbl.setText("from: " + data.getTime());
+		//FIXME: arreglar esto
+		timerHandler.getTimeElapsed(data.getDateTime());
 		tagName.setText(data.getTag().getName());
 
 		for (Template template : data.getTag().getTemplates()) {
