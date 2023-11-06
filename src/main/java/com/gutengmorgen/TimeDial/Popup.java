@@ -65,18 +65,17 @@ public class Popup extends JDialog {
 		bar.setBorder(null);
 		bar.setBackground(new Color(225, 225, 225));
 		content.add(bar, BorderLayout.NORTH);
-		GridBagLayout gbl_panel = new GridBagLayout();
+		GridBagLayout gbl_bar = new GridBagLayout();
 		// TODO: ajustar estos parametros
-		gbl_panel.columnWidths = new int[] { 70, 76, 35, 58 };
-		gbl_panel.rowHeights = new int[] { 20 };
-		gbl_panel.columnWeights = new double[] { 0.0, 1.0, 0.0, 0.0 };
-		gbl_panel.rowWeights = new double[] { 0.0 };
-		bar.setLayout(gbl_panel);
+		gbl_bar.columnWidths = new int[] { 70, 76, 35, 58 };
+		gbl_bar.rowHeights = new int[] { 20 };
+		gbl_bar.columnWeights = new double[] { 0.0, 1.0, 0.0, 0.0 };
+		gbl_bar.rowWeights = new double[] { 0.0 };
+		bar.setLayout(gbl_bar);
 
 		JLabel descriptionlbl = new JLabel("Description:");
 		descriptionlbl.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		GridBagConstraints gbc_descriptionlbl = new GridBagConstraints();
-		gbc_descriptionlbl.insets = new Insets(0, 0, 0, 5);
 		gbc_descriptionlbl.gridx = 0;
 		gbc_descriptionlbl.gridy = 0;
 		bar.add(descriptionlbl, gbc_descriptionlbl);
@@ -84,14 +83,12 @@ public class Popup extends JDialog {
 		timelbl = new JLabel();
 		timerHandler.setClock(timelbl);
 		GridBagConstraints gbc_timelbl = new GridBagConstraints();
-		gbc_timelbl.insets = new Insets(0, 0, 0, 5);
 		gbc_timelbl.gridx = 1;
 		gbc_timelbl.gridy = 0;
 		bar.add(timelbl, gbc_timelbl);
 
 		JLabel taglbl = new JLabel("Tag:");
 		GridBagConstraints gbc_taglbl = new GridBagConstraints();
-		gbc_taglbl.insets = new Insets(0, 0, 0, 5);
 		gbc_taglbl.gridx = 2;
 		gbc_taglbl.gridy = 0;
 		bar.add(taglbl, gbc_taglbl);
