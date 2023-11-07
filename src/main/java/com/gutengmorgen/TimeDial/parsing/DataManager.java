@@ -9,7 +9,8 @@ import java.util.List;
 public class DataManager {
 	private static final String DEFAULT = "src/main/resources/";
 	public static final String TEMPLATE = "Templates.csv";
-	public static final String DATATEMP = "dataTemp.csv";
+	public static final String DATA_TEMPORAL = "dataTemp.csv";
+	public static final String BOOKMARK = "bookmarks.csv";
 	public static final String DELIMITER_MAJOR = ";";
 	public static final String DELIMITER_MINOR = ",";
 	public static final String DELIMITER_TEMPLATE = ":";
@@ -24,19 +25,9 @@ public class DataManager {
 		}
 	}
 
-	public static List<String> readTemplateLines() {
+	public static List<String> readFile(String fileName){
 		try {
-			Path path = Paths.get(DEFAULT + TEMPLATE);
-			return Files.readAllLines(path);
-		} catch (IOException e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
-	
-	public static List<String> readDataTempLines(){
-		try {
-			Path path = Paths.get(DEFAULT + DATATEMP);
+			Path path = Paths.get(DEFAULT + fileName);
 			return Files.readAllLines(path);
 		} catch (IOException e) {
 			e.printStackTrace();

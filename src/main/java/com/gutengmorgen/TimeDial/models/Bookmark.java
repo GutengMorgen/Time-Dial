@@ -14,22 +14,16 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Tag {
-	private String name;
-	private List<Template> templates;
-
+public class Bookmark {
+	private Tag tag;
+	
 	public static List<Tag> parsingAllLines() {
 		List<Tag> l = new ArrayList<>();
-		for (String s : DataManager.readFile(DataManager.TEMPLATE)) {
+		for (String s : DataManager.readFile(DataManager.BOOKMARK)) {
 			String[] split = s.split(DataManager.DELIMITER_MAJOR);
 			String[] splitInter = split[1].split(DataManager.DELIMITER_MINOR);
-			l.add(new Tag(split[0], Template.convert(splitInter, false)));
+			l.add(new Tag(split[0], Template.convert(splitInter, true)));
 		}
 		return l;
-	}
-
-	@Override
-	public String toString() {
-		return name;
 	}
 }

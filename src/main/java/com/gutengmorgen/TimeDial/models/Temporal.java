@@ -22,7 +22,7 @@ public class Temporal {
 
 	public static List<Temporal> parsingAllLines() {
 		List<Temporal> l = new ArrayList<>();
-		for (String s : DataManager.readDataTempLines()) {
+		for (String s : DataManager.readFile(DataManager.DATA_TEMPORAL)) {
 			String[] split = s.split(DataManager.DELIMITER_MAJOR);
 			String[] splitInter = split[3].split(DataManager.DELIMITER_MINOR);
 			l.add(new Temporal(convertDateTime(split[0], split[1]),

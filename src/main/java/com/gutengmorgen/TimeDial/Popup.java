@@ -8,6 +8,7 @@ import javax.swing.UIManager;
 import com.gutengmorgen.TimeDial.extras.ShortcutManager;
 import com.gutengmorgen.TimeDial.extras.TimerHandler;
 import com.gutengmorgen.TimeDial.models.Temporal;
+import com.gutengmorgen.TimeDial.models.Bookmark;
 import com.gutengmorgen.TimeDial.models.Model;
 import com.gutengmorgen.TimeDial.models.Tag;
 import com.gutengmorgen.TimeDial.models.Template;
@@ -15,6 +16,8 @@ import com.gutengmorgen.TimeDial.models.Template;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.KeyEvent;
+import java.net.SecureCacheResponse;
+import java.util.List;
 import java.awt.GridBagConstraints;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
@@ -38,6 +41,7 @@ public class Popup extends JDialog {
 	private JLabel timelbl;
 	private Model<Tag> modelTag = new Model<>(Tag.parsingAllLines());
 	private Model<Temporal> modelTemp = new Model<>(Temporal.parsingAllLines());
+	private Model<Tag> modelBookmark = new Model<>(Bookmark.parsingAllLines());
 	private TimerHandler timerHandler = new TimerHandler();
 
 	public static void main(String[] args) {
@@ -139,6 +143,7 @@ public class Popup extends JDialog {
 			JTextField field = new JTextField();
 			field.setBackground(new Color(242, 242, 242));
 			field.setBorder(new EmptyBorder(5, 5, 5, 5));
+			field.setText(template.getHold());
 			ShortcutManager.nav(this, field);
 			addComponent(template.getName(), field);
 		}
@@ -151,7 +156,7 @@ public class Popup extends JDialog {
 		center.revalidate();
 		center.repaint();
 
-		//FIXME: arreglar esto
+		// FIXME: arreglar esto
 		timerHandler.getTimeElapsed(data.getDateTime());
 		tagName.setText(data.getTag().getName());
 
@@ -214,5 +219,13 @@ public class Popup extends JDialog {
 			model.increaseIndex();
 		}
 //		autoFill(model.getValue());
+	}
+
+	public void selectedIndexBookmark(int index) {
+		List<Tag> list = Bookmark.parsingAllLines().stream().filter(t -> t.getName().equals(tagName.getText()))
+				.toList();
+
+		if (list.size() > index && index >= 0)
+			autoFill(list.get(index));
 	}
 }
