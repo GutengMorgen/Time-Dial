@@ -8,6 +8,7 @@ import javax.swing.UIManager;
 import com.gutengmorgen.TimeDial.extras.ShortcutManager;
 import com.gutengmorgen.TimeDial.extras.TimerHandler;
 import com.gutengmorgen.TimeDial.models.Temporal;
+import com.gutengmorgen.TimeDial.parsing.DataManager;
 import com.gutengmorgen.TimeDial.models.Bookmark;
 import com.gutengmorgen.TimeDial.models.Model;
 import com.gutengmorgen.TimeDial.models.Tag;
@@ -18,6 +19,7 @@ import java.awt.Insets;
 import java.awt.event.KeyEvent;
 import java.net.SecureCacheResponse;
 import java.util.List;
+import java.util.StringJoiner;
 import java.awt.GridBagConstraints;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
@@ -41,8 +43,8 @@ public class Popup extends JDialog {
 	private JLabel timelbl;
 	private Model<Tag> modelTag = new Model<>(Tag.parsingAllLines());
 	private Model<Temporal> modelTemp = new Model<>(Temporal.parsingAllLines());
-	private Model<Tag> modelBookmark = new Model<>(Bookmark.parsingAllLines());
 	private TimerHandler timerHandler = new TimerHandler();
+	private final ShortcutManager shortcuts = new ShortcutManager(this);
 
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
@@ -128,6 +130,7 @@ public class Popup extends JDialog {
 
 	public void saveClose() {
 //		if (checkText())
+//		saveToBookmark();
 		this.dispose();
 	}
 
@@ -136,15 +139,15 @@ public class Popup extends JDialog {
 		center.revalidate();
 		center.repaint();
 
-		tagName.setText(myTags.getName());
 		timerHandler.restartClock();
+		tagName.setText(myTags.getName());
 
 		for (Template template : myTags.getTemplates()) {
 			JTextField field = new JTextField();
 			field.setBackground(new Color(242, 242, 242));
 			field.setBorder(new EmptyBorder(5, 5, 5, 5));
 			field.setText(template.getHold());
-			ShortcutManager.nav(this, field);
+			shortcuts.nav(field);
 			addComponent(template.getName(), field);
 		}
 		closeAutoFill();
@@ -156,7 +159,6 @@ public class Popup extends JDialog {
 		center.revalidate();
 		center.repaint();
 
-		// FIXME: arreglar esto
 		timerHandler.getTimeElapsed(data.getDateTime());
 		tagName.setText(data.getTag().getName());
 
@@ -165,13 +167,33 @@ public class Popup extends JDialog {
 			field.setBackground(new Color(242, 242, 242));
 			field.setBorder(new EmptyBorder(5, 5, 5, 5));
 			field.setText(template.getHold());
-			ShortcutManager.nav(this, field);
+			shortcuts.nav(field);
 			addComponent(template.getName(), field);
 		}
 		closeAutoFill();
 		center.getComponent(1).requestFocus();
 	}
 
+	private void autofill(Bookmark bookmark) {
+		center.removeAll();
+		center.revalidate();
+		center.repaint();
+
+		timerHandler.restartClock();
+		tagName.setText(bookmark.getTag().getName());
+
+		for (Template template : bookmark.getTag().getTemplates()) {
+			JTextField field = new JTextField();
+			field.setBackground(new Color(242, 242, 242));
+			field.setBorder(new EmptyBorder(5, 5, 5, 5));
+			field.setText(template.getHold());
+			shortcuts.nav(field);
+			addComponent(template.getName(), field);
+		}
+		closeAutoFill();
+		center.getComponent(1).requestFocus();
+	}
+	
 	private void addComponent(String name, JComponent comp) {
 		cons.gridx = 0;
 		cons.gridy = rowIndex;
@@ -212,6 +234,7 @@ public class Popup extends JDialog {
 		autoFill(modelTemp.getValue());
 	}
 
+	@Deprecated
 	public void selectedIndex(int event, Model<?> model) {
 		if (event == KeyEvent.VK_RIGHT || event == KeyEvent.VK_UP) {
 			model.reduceIndex();
@@ -221,11 +244,66 @@ public class Popup extends JDialog {
 //		autoFill(model.getValue());
 	}
 
-	public void selectedIndexBookmark(int index) {
-		List<Tag> list = Bookmark.parsingAllLines().stream().filter(t -> t.getName().equals(tagName.getText()))
-				.toList();
+	public void selectedIndexBookmark(int position) {
+		Bookmark bookmark = Bookmark.parsing()
+				.stream()
+				.filter(b -> b.getTag().getName().equals(tagName.getText()) && b.getPosition() == position)
+				.findFirst()
+				.orElse(null);
+		if(bookmark != null)
+			autofill(bookmark);
+	}
 
-		if (list.size() > index && index >= 0)
-			autoFill(list.get(index));
+	public void saveToBookmark() {
+		String tagName = this.tagName.getText();
+		StringBuilder format = new StringBuilder();
+		format.append(tagName + ";");
+
+		for (int i = 0; i < center.getComponentCount(); i++) {
+			Component comp = center.getComponent(i);
+			if (comp instanceof JLabel label) {
+				format.append(label.getText());
+			} else if (comp instanceof JTextField field) {
+				format.append(field.getText());
+				if (i != center.getComponentCount() - 1)
+					format.append(",");
+			}
+		}
+
+		DataManager.writeToFile(format.toString(), DataManager.BOOKMARK);
+	}
+
+	public void saveToBookmark(int position) {
+		if(!filter(position))
+			return;
+		String tagName = this.tagName.getText();
+		StringBuilder format = new StringBuilder();
+		format.append(position + ";");
+		format.append(tagName + ";");
+
+		for (int i = 0; i < center.getComponentCount(); i++) {
+			Component comp = center.getComponent(i);
+			if (comp instanceof JLabel label) {
+				format.append(label.getText());
+			} else if (comp instanceof JTextField field) {
+				format.append(field.getText());
+				if (i != center.getComponentCount() - 1)
+					format.append(",");
+			}
+		}
+
+		DataManager.writeToFile(format.toString(), DataManager.BOOKMARK);
+	}
+
+	private boolean filter(int position) {
+		Bookmark bookmark = Bookmark.parsing()
+				.stream()
+				.filter(b -> b.getTag().getName().equals(tagName.getText()) && b.getPosition() == position)
+				.findFirst()
+				.orElse(null);
+		if(bookmark == null)
+			return true;
+		else
+			return false;
 	}
 }

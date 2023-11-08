@@ -1,9 +1,12 @@
 package com.gutengmorgen.TimeDial.parsing;
 
+import java.io.BufferedWriter;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.List;
 
 public class DataManager {
@@ -25,13 +28,25 @@ public class DataManager {
 		}
 	}
 
-	public static List<String> readFile(String fileName){
+	public static List<String> readFile(String fileName) {
 		try {
 			Path path = Paths.get(DEFAULT + fileName);
 			return Files.readAllLines(path);
 		} catch (IOException e) {
 			e.printStackTrace();
 			return null;
+		}
+	}
+
+	public static void writeToFile(String line, String fileName) {
+		try {
+			Path path = Paths.get(DEFAULT + fileName);
+			BufferedWriter writer = Files.newBufferedWriter(path, StandardCharsets.UTF_8, StandardOpenOption.APPEND);
+			writer.write(line);
+			writer.newLine();
+			writer.close();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 }
