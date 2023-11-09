@@ -1,10 +1,7 @@
 package com.gutengmorgen.TimeDial.extras;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.InputEvent;
-import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.util.Iterator;
 
 import javax.swing.AbstractAction;
 import javax.swing.JComponent;
@@ -45,7 +42,7 @@ public class ShortcutManager {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				popup.modelTag.reduceIndex();
-				popup.selectedIndexModel();
+				popup.autoFill(popup.modelTag.getValue());
 			}
 		});
 
@@ -55,7 +52,7 @@ public class ShortcutManager {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				popup.modelTag.increaseIndex();
-				popup.selectedIndexModel();
+				popup.autoFill(popup.modelTag.getValue());
 			}
 		});
 
@@ -65,7 +62,7 @@ public class ShortcutManager {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				popup.modelTemp.reduceIndex();
-				popup.selectedIndexTemp();
+				popup.autoFill(popup.modelTemp.getValue());
 			}
 		});
 
@@ -75,7 +72,7 @@ public class ShortcutManager {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				popup.modelTemp.increaseIndex();
-				popup.selectedIndexTemp();
+				popup.autoFill(popup.modelTemp.getValue());
 			}
 		});
 
@@ -92,8 +89,10 @@ public class ShortcutManager {
 			comp.getActionMap().put(getBookmark + i, new AbstractAction() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					System.out.println("get" + index);
-					popup.selectedIndexBookmark(index);
+					if (!popup.filter(index)) {
+						popup.timelbl.setText("Get bookmark: " + index);
+						popup.selectedIndexBookmark(index);
+					}
 				}
 			});
 		}
@@ -108,8 +107,8 @@ public class ShortcutManager {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					if (popup.checkText() && popup.filter(index)) {
-						System.out.println("set " + index);
-						String format = popup.formatToBookmark(index);
+						popup.timelbl.setText("Set bookmark in: " + index);
+						String format = popup.bookmarkFormat(index);
 						DataManager.appendToFile(format, DataManager.BOOKMARK);
 					}
 				}
@@ -126,8 +125,8 @@ public class ShortcutManager {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					if (popup.checkText()) {
-						System.out.println("Override " + index);
-						String format = popup.formatToBookmark(index);
+						popup.timelbl.setText("Override bookmark in: " + index);
+						String format = popup.bookmarkFormat(index);
 						DataManager.updateLine(popup.getIndex(index), format, DataManager.BOOKMARK);
 					}
 				}
