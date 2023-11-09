@@ -41,8 +41,8 @@ public class Popup extends JDialog {
 	private JPanel center;
 	private JLabel tagName;
 	private JLabel timelbl;
-	private Model<Tag> modelTag = new Model<>(Tag.parsingAllLines());
-	private Model<Temporal> modelTemp = new Model<>(Temporal.parsingAllLines());
+	public Model<Tag> modelTag = new Model<>(Tag.parsingAllLines());
+	public Model<Temporal> modelTemp = new Model<>(Temporal.parsingAllLines());
 	private TimerHandler timerHandler = new TimerHandler();
 	private final ShortcutManager shortcuts = new ShortcutManager(this);
 
@@ -193,7 +193,7 @@ public class Popup extends JDialog {
 		closeAutoFill();
 		center.getComponent(1).requestFocus();
 	}
-	
+
 	private void addComponent(String name, JComponent comp) {
 		cons.gridx = 0;
 		cons.gridy = rowIndex;
@@ -216,21 +216,11 @@ public class Popup extends JDialog {
 		pack();
 	}
 
-	public void selectedIndexModel(int event) {
-		if (event == KeyEvent.VK_UP)
-			modelTag.reduceIndex();
-		else if (event == KeyEvent.VK_DOWN)
-			modelTag.increaseIndex();
-
+	public void selectedIndexModel() {
 		autoFill(modelTag.getValue());
 	}
 
-	public void selectedIndexTemp(int event) {
-		if (event == KeyEvent.VK_RIGHT)
-			modelTemp.reduceIndex();
-		else if (event == KeyEvent.VK_LEFT)
-			modelTemp.increaseIndex();
-
+	public void selectedIndexTemp() {
 		autoFill(modelTemp.getValue());
 	}
 
@@ -245,12 +235,10 @@ public class Popup extends JDialog {
 	}
 
 	public void selectedIndexBookmark(int position) {
-		Bookmark bookmark = Bookmark.parsing()
-				.stream()
-				.filter(b -> b.getTag().getName().equals(tagName.getText()) && b.getPosition() == position)
-				.findFirst()
+		Bookmark bookmark = Bookmark.parsing().stream()
+				.filter(b -> b.getTag().getName().equals(tagName.getText()) && b.getPosition() == position).findFirst()
 				.orElse(null);
-		if(bookmark != null)
+		if (bookmark != null)
 			autofill(bookmark);
 	}
 
@@ -270,12 +258,10 @@ public class Popup extends JDialog {
 			}
 		}
 
-		DataManager.writeToFile(format.toString(), DataManager.BOOKMARK);
+		DataManager.appendToFile(format.toString(), DataManager.BOOKMARK);
 	}
 
-	public void saveToBookmark(int position) {
-		if(!filter(position))
-			return;
+	public String formatToBookmark(int position) {
 		String tagName = this.tagName.getText();
 		StringBuilder format = new StringBuilder();
 		format.append(position + ";");
@@ -291,19 +277,37 @@ public class Popup extends JDialog {
 					format.append(",");
 			}
 		}
-
-		DataManager.writeToFile(format.toString(), DataManager.BOOKMARK);
+		return format.toString();
 	}
 
-	private boolean filter(int position) {
-		Bookmark bookmark = Bookmark.parsing()
-				.stream()
-				.filter(b -> b.getTag().getName().equals(tagName.getText()) && b.getPosition() == position)
-				.findFirst()
+	/**
+	 * return true == no existe ningun objeto en la posicion dada y se pude
+	 * settear/escribir un nuevo objeto return false == existe un objecto en la
+	 * posicion dada y no se puede escribir
+	 * 
+	 * @param position
+	 * @return
+	 */
+	public boolean filter(int position) {
+		List<Bookmark> list = Bookmark.parsing();
+		Bookmark bookmark = list.stream()
+				.filter(b -> b.getTag().getName().equals(tagName.getText()) && b.getPosition() == position).findFirst()
 				.orElse(null);
-		if(bookmark == null)
+		list.indexOf(bookmark);
+		if (bookmark == null)
 			return true;
 		else
 			return false;
+	}
+
+	public int getIndex(int position) {
+		List<Bookmark> list = Bookmark.parsing();
+		Bookmark bookmark = list.stream()
+				.filter(b -> b.getTag().getName().equals(tagName.getText()) && b.getPosition() == position).findFirst()
+				.orElse(null);
+		if (bookmark == null)
+			return -1;
+		else
+			return list.indexOf(bookmark);
 	}
 }

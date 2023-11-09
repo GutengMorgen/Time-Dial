@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.nio.file.OpenOption;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
@@ -18,35 +19,37 @@ public class DataManager {
 	public static final String DELIMITER_MINOR = ",";
 	public static final String DELIMITER_TEMPLATE = ":";
 
-	public static void main(String[] args) {
-		String data = "src/main/resources/Templates.csv";
-		Path path = Paths.get(data);
-		if (Files.exists(path)) {
-			System.out.println("path exists");
-		} else {
-			System.out.println("path doesnt exists");
-		}
-	}
-
 	public static List<String> readFile(String fileName) {
 		try {
-			Path path = Paths.get(DEFAULT + fileName);
-			return Files.readAllLines(path);
+			return Files.readAllLines(path(fileName));
 		} catch (IOException e) {
 			e.printStackTrace();
 			return null;
 		}
 	}
 
-	public static void writeToFile(String line, String fileName) {
+	public static void appendToFile(String line, String fileName) {
 		try {
-			Path path = Paths.get(DEFAULT + fileName);
-			BufferedWriter writer = Files.newBufferedWriter(path, StandardCharsets.UTF_8, StandardOpenOption.APPEND);
+			BufferedWriter writer = Files.newBufferedWriter(path(fileName), StandardCharsets.UTF_8, StandardOpenOption.APPEND);
 			writer.write(line);
 			writer.newLine();
 			writer.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public static void updateLine(int index, String line, String fileName) {
+		try {
+			List<String> list = readFile(fileName);
+			list.set(index, line);
+			Files.write(path(fileName), list, StandardOpenOption.WRITE);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private static Path path(String fileName) {
+		return Paths.get(DEFAULT + fileName);
 	}
 }
