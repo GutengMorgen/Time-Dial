@@ -5,6 +5,7 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.AbstractAction;
 import javax.swing.JComponent;
+import javax.swing.JLabel;
 import javax.swing.KeyStroke;
 
 import com.gutengmorgen.TimeDial.Popup;
@@ -13,6 +14,7 @@ import com.gutengmorgen.TimeDial.parsing.DataManager;
 @SuppressWarnings("serial")
 public class ShortcutManager {
 	private final Popup popup;
+	private final JLabel footer;
 	private final int ctrlCode = KeyEvent.CTRL_DOWN_MASK;
 	private final int shiftCode = KeyEvent.SHIFT_DOWN_MASK;
 	private final int[] keycodes = { KeyEvent.VK_F1, KeyEvent.VK_F2, KeyEvent.VK_F3, KeyEvent.VK_F4, KeyEvent.VK_F5,
@@ -22,8 +24,9 @@ public class ShortcutManager {
 	private final String getBookmark = "getBkm";
 	private final String overrideBookmark = "overBkm";
 
-	public ShortcutManager(Popup popup) {
+	public ShortcutManager(Popup popup, JLabel footer) {
 		this.popup = popup;
+		this.footer = footer;
 	}
 
 	public void nav(JComponent comp) {
@@ -90,8 +93,10 @@ public class ShortcutManager {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					if (!popup.filter(index)) {
-						popup.timelbl.setText("Get bookmark: " + index);
 						popup.selectedIndexBookmark(index);
+						footer.setText("Get bookmark: " + index);
+					} else {
+						footer.setText("Bookmark in index: " + index + " doesnt exist.");
 					}
 				}
 			});
@@ -107,9 +112,11 @@ public class ShortcutManager {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					if (popup.checkText() && popup.filter(index)) {
-						popup.timelbl.setText("Set bookmark in: " + index);
 						String format = popup.bookmarkFormat(index);
 						DataManager.appendToFile(format, DataManager.BOOKMARK);
+						footer.setText("Set bookmark in index: " + index);
+					} else {
+						footer.setText("Bookmark all ready exist in index: " + index);
 					}
 				}
 			});
@@ -125,9 +132,11 @@ public class ShortcutManager {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					if (popup.checkText()) {
-						popup.timelbl.setText("Override bookmark in: " + index);
 						String format = popup.bookmarkFormat(index);
 						DataManager.updateLine(popup.getIndex(index), format, DataManager.BOOKMARK);
+						footer.setText("Override bookmark in index: " + index);
+					} else {
+						footer.setText("Can not override bookmark with empty holds");
 					}
 				}
 			});

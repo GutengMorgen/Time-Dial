@@ -25,6 +25,7 @@ import javax.swing.JLabel;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
 
 import javax.swing.border.EmptyBorder;
 
@@ -36,11 +37,12 @@ public class Popup extends JDialog {
 	private int rowIndex = 0;
 	private JPanel center;
 	private JLabel tagName;
-	public JLabel timelbl;
+	private JLabel timelbl;
+	private final JLabel footerlbl = new JLabel(" ");
 	public Model<Tag> modelTag = new Model<>(Tag.parsingAllLines());
 	public Model<Temporal> modelTemp = new Model<>(Temporal.parsingAllLines());
 	private TimerHandler timerHandler = new TimerHandler();
-	private final ShortcutManager shortcuts = new ShortcutManager(this);
+	private final ShortcutManager shortcuts = new ShortcutManager(this, footerlbl);
 
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
@@ -68,16 +70,15 @@ public class Popup extends JDialog {
 		bar.setBackground(new Color(225, 225, 225));
 		content.add(bar, BorderLayout.NORTH);
 		GridBagLayout gbl_bar = new GridBagLayout();
-		// TODO: ajustar estos parametros
 		gbl_bar.columnWidths = new int[] { 76, 35, 58 };
 		gbl_bar.rowHeights = new int[] { 20 };
 		gbl_bar.columnWeights = new double[] { 1.0, 0.0, 0.0 };
-		gbl_bar.rowWeights = new double[] { 0.0 };
 		bar.setLayout(gbl_bar);
 
 		timelbl = new JLabel();
 		timerHandler.setClock(timelbl);
 		GridBagConstraints gbc_timelbl = new GridBagConstraints();
+		gbc_timelbl.anchor = GridBagConstraints.WEST;
 		gbc_timelbl.insets = new Insets(0, 2, 0, 2);
 		gbc_timelbl.gridx = 0;
 		gbc_timelbl.gridy = 0;
@@ -102,20 +103,22 @@ public class Popup extends JDialog {
 		content.add(center, BorderLayout.CENTER);
 		center.setLayout(new GridBagLayout());
 
+		footerlbl.setBorder(new EmptyBorder(0, 2, 0, 2));
+		footerlbl.setOpaque(true);
+		footerlbl.setBackground(new Color(225, 225, 225));
+		content.add(footerlbl, BorderLayout.SOUTH);
+
 		autoFill(modelTag.getValue());
 	}
 
 	public boolean checkText() {
-		boolean flag = false;
 		for (Component comp : center.getComponents()) {
 			if (comp instanceof JTextField field) {
 				if (field.getText().isBlank())
-					flag = false;
-				else
-					flag = true;
+					return false;
 			}
 		}
-		return flag;
+		return true;
 	}
 
 	public void saveClose() {
@@ -125,66 +128,42 @@ public class Popup extends JDialog {
 	}
 
 	public void autoFill(Tag myTags) {
-		center.removeAll();
-		center.revalidate();
-		center.repaint();
+		initAutoFill();
 
 		timerHandler.restartClock();
 		tagName.setText(myTags.getName());
 
 		for (Template template : myTags.getTemplates()) {
-			JTextField field = new JTextField();
-			field.setBackground(new Color(242, 242, 242));
-			field.setBorder(new EmptyBorder(5, 5, 5, 5));
-			field.setText(template.getHold());
-			shortcuts.nav(field);
-			addComponent(template.getName(), field);
+			addComponent(template.getName(), new CustomTextField(template.getHold()));
 		}
 		closeAutoFill();
-		center.getComponent(1).requestFocus();
 	}
 
 	public void autoFill(Temporal data) {
-		center.removeAll();
-		center.revalidate();
-		center.repaint();
+		initAutoFill();
 
 		timerHandler.getTimeElapsed(data.getDateTime());
 		tagName.setText(data.getTag().getName());
 
 		for (Template template : data.getTag().getTemplates()) {
-			JTextField field = new JTextField();
-			field.setBackground(new Color(242, 242, 242));
-			field.setBorder(new EmptyBorder(5, 5, 5, 5));
-			field.setText(template.getHold());
-			shortcuts.nav(field);
-			addComponent(template.getName(), field);
+			addComponent(template.getName(), new CustomTextField(template.getHold()));
 		}
 		closeAutoFill();
-		center.getComponent(1).requestFocus();
 	}
 
 	public void autofill(Bookmark bookmark) {
-		center.removeAll();
-		center.revalidate();
-		center.repaint();
+		initAutoFill();
 
 		timerHandler.restartClock();
 		tagName.setText(bookmark.getTag().getName());
 
 		for (Template template : bookmark.getTag().getTemplates()) {
-			JTextField field = new JTextField();
-			field.setBackground(new Color(242, 242, 242));
-			field.setBorder(new EmptyBorder(5, 5, 5, 5));
-			field.setText(template.getHold());
-			shortcuts.nav(field);
-			addComponent(template.getName(), field);
+			addComponent(template.getName(), new CustomTextField(template.getHold()));
 		}
 		closeAutoFill();
-		center.getComponent(1).requestFocus();
 	}
 
-	public void addComponent(String name, JComponent comp) {
+	private void addComponent(String name, JComponent comp) {
 		cons.gridx = 0;
 		cons.gridy = rowIndex;
 		cons.insets = new Insets(2, 2, 2, 2);
@@ -200,9 +179,17 @@ public class Popup extends JDialog {
 		rowIndex++;
 	}
 
+	private void initAutoFill() {
+		center.removeAll();
+		center.revalidate();
+		center.repaint();
+	}
+
 	private void closeAutoFill() {
 		rowIndex = 0;
 		pack();
+		shortcuts.nav((JComponent) center.getComponent(1));
+		center.getComponent(1).requestFocus();
 	}
 
 	@Deprecated
@@ -263,5 +250,14 @@ public class Popup extends JDialog {
 			return -1;
 		else
 			return list.indexOf(bookmark);
+	}
+}
+
+class CustomTextField extends JTextField {
+	public CustomTextField(String text) {
+		setText(text);
+		setBackground(new Color(242, 242, 242));
+		setBorder(new EmptyBorder(5, 5, 5, 5));
+		setPreferredSize(new Dimension(250, getPreferredSize().height));
 	}
 }
