@@ -6,7 +6,7 @@ import javax.swing.JPanel;
 import javax.swing.UIManager;
 
 import com.gutengmorgen.TimeDial.extras.ShortcutManager;
-import com.gutengmorgen.TimeDial.extras.TimerHandler;
+import com.gutengmorgen.TimeDial.extras.DateHandler;
 import com.gutengmorgen.TimeDial.models.Temporal;
 import com.gutengmorgen.TimeDial.models.Bookmark;
 import com.gutengmorgen.TimeDial.models.Model;
@@ -29,7 +29,7 @@ import java.awt.Dimension;
 
 import javax.swing.border.EmptyBorder;
 
-public class Popup extends JDialog {
+public class PopupUI extends JDialog {
 	private static final long serialVersionUID = 1L;
 
 	private final JPanel content = new JPanel();
@@ -41,7 +41,7 @@ public class Popup extends JDialog {
 	private final JLabel footerlbl = new JLabel(" ");
 	public Model<Tag> modelTag = new Model<>(Tag.parsingAllLines());
 	public Model<Temporal> modelTemp = new Model<>(Temporal.parsingAllLines());
-	private TimerHandler timerHandler = new TimerHandler();
+	private DateHandler timerHandler = new DateHandler();
 	private final ShortcutManager shortcuts = new ShortcutManager(this, footerlbl);
 
 	public static void main(String[] args) {
@@ -50,7 +50,7 @@ public class Popup extends JDialog {
 			public void run() {
 				try {
 					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-					Popup dialog = new Popup();
+					PopupUI dialog = new PopupUI();
 					dialog.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -59,7 +59,8 @@ public class Popup extends JDialog {
 		});
 	}
 
-	public Popup() {
+	public PopupUI() {
+		setTitle("Time Dial Popup");
 		setUndecorated(true);
 		setBounds(5, 5, 450, 160);
 		setContentPane(content);
@@ -253,6 +254,7 @@ public class Popup extends JDialog {
 	}
 }
 
+@SuppressWarnings("serial")
 class CustomTextField extends JTextField {
 	public CustomTextField(String text) {
 		setText(text);

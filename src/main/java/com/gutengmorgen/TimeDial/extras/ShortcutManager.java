@@ -8,12 +8,12 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.KeyStroke;
 
-import com.gutengmorgen.TimeDial.Popup;
+import com.gutengmorgen.TimeDial.PopupUI;
 import com.gutengmorgen.TimeDial.parsing.DataManager;
 
 @SuppressWarnings("serial")
 public class ShortcutManager {
-	private final Popup popup;
+	private final PopupUI popup;
 	private final JLabel footer;
 	private final int ctrlCode = KeyEvent.CTRL_DOWN_MASK;
 	private final int shiftCode = KeyEvent.SHIFT_DOWN_MASK;
@@ -24,7 +24,7 @@ public class ShortcutManager {
 	private final String getBookmark = "getBkm";
 	private final String overrideBookmark = "overBkm";
 
-	public ShortcutManager(Popup popup, JLabel footer) {
+	public ShortcutManager(PopupUI popup, JLabel footer) {
 		this.popup = popup;
 		this.footer = footer;
 	}
