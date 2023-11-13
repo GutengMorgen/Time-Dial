@@ -125,6 +125,7 @@ public class PopupUI extends JDialog {
 	public void saveClose() {
 //		if (checkText())
 //		saveToBookmark();
+		MainFrame.getInstance().timerHandler.restart();
 		this.dispose();
 	}
 

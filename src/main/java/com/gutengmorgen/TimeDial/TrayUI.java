@@ -25,7 +25,6 @@ public class TrayUI {
             	setMenu(frame);
             	setOnce(frame);
             }
-            
             frame.setVisible(false);
         } catch (AWTException ex) {
             ex.printStackTrace();
@@ -44,7 +43,7 @@ public class TrayUI {
         	frame.setVisible(true);
         	frame.setState(JFrame.NORMAL);
         });
-        exitItem.addActionListener(e -> System.exit(0));
+        exitItem.addActionListener(e -> frame.dispose());
 	}
 	
 	private static void setOnce(JFrame frame) throws AWTException {

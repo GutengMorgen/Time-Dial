@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
+import com.gutengmorgen.TimeDial.extras.TimerHandler;
 import com.gutengmorgen.TimeDial.parsing.DataManager;
 
 import java.awt.BorderLayout;
@@ -30,11 +31,12 @@ import javax.swing.JTextArea;
 import javax.swing.JButton;
 
 public class MainFrame extends JFrame {
-
 	private static final long serialVersionUID = 1L;
+	private static MainFrame instance;
 	private JPanel contentPane;
 	private JToggleButton toggleBtn;
-	private JLabel description;
+	private JLabel description = new JLabel(" ");
+	public final TimerHandler timerHandler;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -50,11 +52,19 @@ public class MainFrame extends JFrame {
 		});
 	}
 
+	public static MainFrame getInstance() {
+		if(instance == null)
+			instance = new MainFrame();
+		return instance;
+	}
+	
 	public MainFrame() {
+		instance = this;
+		timerHandler = new TimerHandler(description, 1);
 		setTitle("Time Dial");
 		setIconImage(Toolkit.getDefaultToolkit().getImage("src/main/resources/icon.jpg"));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(479,529);
+		setSize(450,420);
 		addWindowListener(new WindowAdapter() {
 
 			@Override
@@ -97,17 +107,18 @@ public class MainFrame extends JFrame {
 			public void itemStateChanged(ItemEvent e) {
 				int state = e.getStateChange();
 				if(state == ItemEvent.SELECTED) {
+					timerHandler.runPopup();
 					toggleBtn.setText("Popup is turn on");
-					description.setText("Time to appeard:");
+					description.setText("Popup is running");
 				} else {
 					toggleBtn.setText("Popup is turn off");
+					timerHandler.stop();
 					description.setText(" ");
 				}
 				
 			}
 		});
 		
-		description = new JLabel(" ");
 		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
 		gbc_lblNewLabel_1.anchor = GridBagConstraints.WEST;
 		gbc_lblNewLabel_1.gridx = 1;
