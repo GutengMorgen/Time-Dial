@@ -3,8 +3,6 @@ package com.gutengmorgen.TimeDial;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.WindowAdapter;
@@ -16,7 +14,6 @@ import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
 import com.gutengmorgen.TimeDial.extras.TimerHandler;
-import com.gutengmorgen.TimeDial.parsing.DataManager;
 
 import java.awt.BorderLayout;
 import javax.swing.JScrollPane;
@@ -25,7 +22,6 @@ import javax.swing.JToggleButton;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
-import java.awt.SystemTray;
 
 import javax.swing.JTextArea;
 import javax.swing.JButton;
@@ -35,8 +31,9 @@ public class MainFrame extends JFrame {
 	private static MainFrame instance;
 	private JPanel contentPane;
 	private JToggleButton toggleBtn;
-	private JLabel description = new JLabel(" ");
+	public JLabel description = new JLabel(" ");
 	public final TimerHandler timerHandler;
+	public TrayUI trayUI;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -60,21 +57,24 @@ public class MainFrame extends JFrame {
 	
 	public MainFrame() {
 		instance = this;
-		timerHandler = new TimerHandler(description, 1);
+		timerHandler = new TimerHandler(this, 15);
 		setTitle("Time Dial");
 		setIconImage(Toolkit.getDefaultToolkit().getImage("src/main/resources/icon.jpg"));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(450,420);
+		trayUI = new TrayUI(this);
 		addWindowListener(new WindowAdapter() {
 
 			@Override
 			public void windowIconified(WindowEvent e) {
-				if(SystemTray.isSupported())
-					TrayUI.minimizeToTray(MainFrame.this);
-				else
-					MainFrame.this.dispose();
+				trayUI.add();
 			}
-		
+
+			@Override
+			public void windowActivated(WindowEvent e) {
+				trayUI.remove();
+			}
+			
 		});
 		centerFrameOnScreen(this);
 		contentPane = new JPanel();

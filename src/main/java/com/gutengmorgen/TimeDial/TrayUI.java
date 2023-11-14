@@ -11,14 +11,59 @@ import java.awt.TrayIcon;
 import javax.swing.JFrame;
 
 public class TrayUI {
-    private static PopupMenu popupMenu;
-	private static MenuItem restoreItem;
-	private static MenuItem exitItem;
-	
-    private static Image iconImage;
-	private static TrayIcon trayIcon;
-    private static SystemTray tray;
+    private PopupMenu popupMenu;
+	private MenuItem restoreItem;
+	private MenuItem exitItem;
+    private Image iconImage;
+	private TrayIcon trayIcon;
+    private SystemTray tray;
+    private JFrame frame;
 
+    public TrayUI(JFrame frame){
+    	if(!SystemTray.isSupported()) {
+    		System.out.println("system tray is not support");
+    		return;
+    	}
+    	
+    	this.frame = frame;
+    	
+    	tray = SystemTray.getSystemTray();
+    	iconImage = frame.getIconImage();
+    	
+		popupMenu = new PopupMenu();
+		restoreItem = new MenuItem("Restore");
+		exitItem = new MenuItem("Exit");
+        restoreItem.addActionListener(e -> {
+        	frame.setVisible(true);
+        	frame.setState(JFrame.NORMAL);
+        });
+        exitItem.addActionListener(e -> System.exit(0));
+		popupMenu.add(restoreItem);
+        popupMenu.add(exitItem);
+        
+        trayIcon = new TrayIcon(iconImage, "System Tray Time Dial", popupMenu);
+        trayIcon.setImageAutoSize(true);
+    }
+    
+    public void add() {
+    	try {
+			tray.add(trayIcon);
+			frame.setVisible(false);
+		} catch (AWTException e) {
+			System.out.println("Unable to add trayIcon to SystemTray");
+		}
+    }
+    
+    public void remove() {
+    	tray.remove(trayIcon);
+    }
+    
+    public void setIcon(int num) {
+    	String imageUrl = "src/main/resources/timer/" + num +".jpg";
+    	System.out.println(imageUrl);
+    	trayIcon.setImage(Toolkit.getDefaultToolkit().getImage(imageUrl));
+    }
+    /*
 	public static void minimizeToTray(JFrame frame) {
         try {
             if(tray == null && trayIcon == null) {
@@ -53,5 +98,5 @@ public class TrayUI {
     	trayIcon = new TrayIcon(iconImage, "Time Dial", popupMenu);
         trayIcon.setImageAutoSize(true);
         tray.add(trayIcon);
-	}
+	}*/
 }

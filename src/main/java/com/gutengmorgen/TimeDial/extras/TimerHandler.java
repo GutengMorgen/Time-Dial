@@ -3,9 +3,11 @@ package com.gutengmorgen.TimeDial.extras;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.Timer;
 
+import com.gutengmorgen.TimeDial.MainFrame;
 import com.gutengmorgen.TimeDial.PopupUI;
 
 import lombok.Getter;
@@ -20,7 +22,7 @@ public class TimerHandler {
 	private final Timer timer;
 	private final static String format = "Time to appear: %02d: %02d";
 
-	public TimerHandler(JLabel out, int periodMinutes) {
+	public TimerHandler(MainFrame frame, int periodMinutes) {
 		this.periodMinutes = periodMinutes;
 		minutes = getPeriodMinutes();
 		timer = new Timer(1000, new ActionListener() {
@@ -30,15 +32,17 @@ public class TimerHandler {
 				if (minutes == 0 && seconds == 0) {
 					stop();
 					runPopup();
-					out.setText("Popup is running");
+					frame.description.setText("Popup is running");
 				} else {
 					if (seconds == 0) {
 						minutes--;
 						seconds = 59;
+						//cambiar el icon del tray aqui
+						frame.trayUI.setIcon(minutes);
 					} else {
 						seconds--;
 					}
-					out.setText(String.format(format, minutes, seconds));
+					frame.description.setText(String.format(format, minutes, seconds));
 				}
 
 			}
