@@ -114,7 +114,8 @@ public class PopupUI extends JDialog {
 
 	public boolean checkText() {
 		for (Component comp : center.getComponents()) {
-			if (comp instanceof JTextField field) {
+			if (comp instanceof JTextField) {
+				JTextField field = (JTextField) comp;
 				if (field.getText().isBlank())
 					return false;
 			}
@@ -220,9 +221,11 @@ public class PopupUI extends JDialog {
 
 		for (int i = 0; i < center.getComponentCount(); i++) {
 			Component comp = center.getComponent(i);
-			if (comp instanceof JLabel label) {
+			if (comp instanceof JLabel ) {
+				JLabel label = (JLabel) comp;
 				format.append(label.getText());
-			} else if (comp instanceof JTextField field) {
+			} else if (comp instanceof JTextField ) {
+				JTextField field = (JTextField) comp;
 				format.append(field.getText());
 				if (i != center.getComponentCount() - 1)
 					format.append(",");

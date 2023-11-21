@@ -39,9 +39,6 @@ public class MainFrame extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-//					for (Object object : UIManager.getInstalledLookAndFeels()) {
-//						System.out.println(object.toString());
-//					}
 					UIManager.setLookAndFeel("com.sun.java.swing.plaf.gtk.GTKLookAndFeel");
 					MainFrame frame = new MainFrame();
 					frame.setVisible(true);
