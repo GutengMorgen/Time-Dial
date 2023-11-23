@@ -32,6 +32,7 @@ public class SqliteConnection {
 	private static void createTable(Connection connection) throws SQLException {
 		Statement state = connection.createStatement();
 		state.execute("CREATE TABLE IF NOT EXISTS my_table (id INTEGER PRIMARY KEY, name TEXT);");
+		state.execute("CREATE TABLE IF NOT EXISTS bookmarks (if INTEGER PRIMART KEY, name TEXT)");
 		System.out.println("table create successfuly");
 
 		state.executeUpdate("INSERT INTO my_table (id, name) VALUES (1, 'John');");
