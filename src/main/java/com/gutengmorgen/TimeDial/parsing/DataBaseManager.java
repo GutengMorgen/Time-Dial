@@ -9,7 +9,6 @@ public class DataBaseManager {
 	public static final String BOOKMARK = "templates.db";
 	public static final String DELIMITER_MAJOR = ";";
 	public static final String DELIMITER_MINOR = ",";
-	public static final String DELIMITER_TEMPLATE = ":";
 	
 	public static List<String> getData(){
 		return null;
