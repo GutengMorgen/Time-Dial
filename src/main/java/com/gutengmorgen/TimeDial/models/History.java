@@ -28,13 +28,12 @@ public class History {
 	private String tag;
 	private List<Template> templates;
 	
-	public List<History> getAll(){
+	public static List<History> getAll(){
 		List<History> list = new ArrayList<>();
 		try(Connection cnt = DriverManager.getConnection(DataBaseManager.HISTORY_URL)) {
-			Statement stm = cnt.createStatement();
-			ResultSet rst = stm.executeQuery("SELECT * FROM main");
+			ResultSet rst = cnt.createStatement().executeQuery("SELECT * FROM main");
 			while (rst.next()) {
-				String[] split = rst.getString(4).split(DataManager.DELIMITER_MINOR);
+				String[] split = rst.getString(4).split(DataBaseManager.DELIMITER_MINOR);
 				list.add(new History(dateTime(rst.getString(2)), rst.getString(3), Template.convert(split, true)));
 			}
 			return list;

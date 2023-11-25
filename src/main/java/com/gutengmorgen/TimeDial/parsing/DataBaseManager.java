@@ -10,6 +10,7 @@ public class DataBaseManager {
 	public static final String TEMPLATE_URL = JBDC_URL + "template.db";
 	public static final String TEMPORAL_URL = JBDC_URL + "temporal.db";
 	public static final String HISTORY_URL = JBDC_URL + "history.db";
+	public static final String DELIMITER_MINOR = ",";
 
 	public static ResultSet getAllData(String dbPath) {
 		return executeQueryStm(dbPath, "SELECT * FROM main");

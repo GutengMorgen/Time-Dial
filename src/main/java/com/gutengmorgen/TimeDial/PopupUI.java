@@ -41,7 +41,8 @@ public class PopupUI extends JDialog {
 	private JLabel timelbl;
 	private final JLabel footerlbl = new JLabel(" ");
 	public Model<Tag> modelTag = new Model<>(Tag.parsingAllLines());
-	public Model<Temporal> modelTemp = new Model<>(Temporal.parsingAllLines());
+//	public Model<Temporal> modelTemp = new Model<>(Temporal.parsingAllLines());
+	public Model<Temporal> modelTemp = new Model<>(Temporal.getAll());
 	private DateHandler timerHandler = new DateHandler();
 	private final ShortcutManager shortcuts = new ShortcutManager(this, footerlbl);
 
@@ -129,7 +130,7 @@ public class PopupUI extends JDialog {
 //		if (checkText())
 //		saveToBookmark();
 //		MainFrame.getInstance().timerHandler.restart();
-		saveDescription();
+//		saveDescription();
 		this.dispose();
 	}
 
@@ -149,9 +150,9 @@ public class PopupUI extends JDialog {
 		initAutoFill();
 
 		timerHandler.getTimeElapsed(data.getDateTime());
-		tagName.setText(data.getTag().getName());
+		tagName.setText(data.getTag());
 
-		for (Template template : data.getTag().getTemplates()) {
+		for (Template template : data.getTemplates()) {
 			addComponent(template.getName(), new CustomTextField(template.getHold()));
 		}
 		closeAutoFill();

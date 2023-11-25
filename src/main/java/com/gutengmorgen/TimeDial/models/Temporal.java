@@ -1,17 +1,15 @@
 package com.gutengmorgen.TimeDial.models;
 
-import java.awt.Component;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.management.Query;
-import javax.swing.JLabel;
 
 import com.gutengmorgen.TimeDial.parsing.DataBaseManager;
 import com.gutengmorgen.TimeDial.parsing.DataManager;
@@ -27,23 +25,21 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Temporal {
 	private LocalDateTime dateTime;
-	private Tag tag;
-
-	public static List<Temporal> parsingAllLines() {
-		List<Temporal> l = new ArrayList<>();
-		for (String s : DataManager.readFile(DataManager.DATA_TEMPORAL)) {
-			String[] split = s.split(DataManager.DELIMITER_MAJOR);
-			String[] splitInter = split[3].split(DataManager.DELIMITER_MINOR);
-			l.add(new Temporal(convertDateTime(split[0], split[1]),
-					new Tag(split[2], Template.convert(splitInter, true))));
+	private String tag;
+	private List<Template> templates;
+	
+	public static List<Temporal> getAll(){
+		List<Temporal> list = new ArrayList<>();
+		try(Connection cnt = DriverManager.getConnection(DataBaseManager.HISTORY_URL)) {
+			ResultSet rst = cnt.createStatement().executeQuery("SELECT * FROM main");
+			while (rst.next()) {
+				String[] split = rst.getString(4).split(DataBaseManager.DELIMITER_MINOR);
+				list.add(new Temporal(History.dateTime(rst.getString(2)), rst.getString(3), Template.convert(split, true)));
+			}
+			return list;
+		} catch (Exception e) {
+			throw new RuntimeException(e.getMessage());
 		}
-		return l;
-	}
-
-	public static LocalDateTime convertDateTime(String date, String time) {
-		String text = date + " " + time;
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
-		return LocalDateTime.parse(text, formatter);
 	}
 
 	public static void save(String tag, String dcpFmt) {
