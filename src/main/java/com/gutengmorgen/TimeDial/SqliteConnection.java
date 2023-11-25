@@ -13,8 +13,8 @@ public class SqliteConnection {
 			connection = DriverManager.getConnection("jdbc:sqlite:src/main/resources/hello.db");
 			System.out.println("connect to sqlite");
 
-//			createTable(connection);
-			getData(connection);
+			createTable(connection);
+//			getData(connection);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -31,12 +31,12 @@ public class SqliteConnection {
 
 	private static void createTable(Connection connection) throws SQLException {
 		Statement state = connection.createStatement();
-		state.execute("CREATE TABLE IF NOT EXISTS my_table (id INTEGER PRIMARY KEY, name TEXT);");
-		state.execute("CREATE TABLE IF NOT EXISTS bookmarks (if INTEGER PRIMART KEY, name TEXT)");
+		state.execute("DROP TABLE IF EXISTS my_table");
+		state.execute("CREATE TABLE my_table (id INTEGER PRIMARY KEY, name TEXT);");
 		System.out.println("table create successfuly");
 
-		state.executeUpdate("INSERT INTO my_table (id, name) VALUES (1, 'John');");
-		state.executeUpdate("INSERT INTO my_table (id, name) VALUES (2, 'Alice');");
+		state.executeUpdate("INSERT INTO my_table (name) VALUES ('John');");
+		state.executeUpdate("INSERT INTO my_table (name) VALUES ('Alice');");
 		System.out.println("Data inserted successfully.");
 	}
 

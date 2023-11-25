@@ -29,4 +29,9 @@ public class Template {
 		}
 		return list;
 	}
+
+	@Override
+	public String toString() {
+		return "Template [name=" + name + ", hold=" + hold + "]";
+	}
 }

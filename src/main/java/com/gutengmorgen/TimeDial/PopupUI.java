@@ -9,6 +9,7 @@ import com.gutengmorgen.TimeDial.extras.ShortcutManager;
 import com.gutengmorgen.TimeDial.extras.DateHandler;
 import com.gutengmorgen.TimeDial.models.Temporal;
 import com.gutengmorgen.TimeDial.models.Bookmark;
+import com.gutengmorgen.TimeDial.models.History;
 import com.gutengmorgen.TimeDial.models.Model;
 import com.gutengmorgen.TimeDial.models.Tag;
 import com.gutengmorgen.TimeDial.models.Template;
@@ -61,6 +62,7 @@ public class PopupUI extends JDialog {
 
 	public PopupUI() {
 		setTitle("Time Dial Popup");
+		setAlwaysOnTop(true);
 		setUndecorated(true);
 		setBounds(5, 5, 450, 160);
 		setContentPane(content);
@@ -126,7 +128,8 @@ public class PopupUI extends JDialog {
 	public void saveClose() {
 //		if (checkText())
 //		saveToBookmark();
-		MainFrame.getInstance().timerHandler.restart();
+//		MainFrame.getInstance().timerHandler.restart();
+		saveDescription();
 		this.dispose();
 	}
 
@@ -213,6 +216,30 @@ public class PopupUI extends JDialog {
 			autofill(bookmark);
 	}
 
+	public void saveDescription() {
+		String tag = this.tagName.getText();
+		String dcp = descriptionFormat();
+		Temporal.save(tag, dcp);
+		History.save(tag, dcp);
+	}
+	
+	
+	private String descriptionFormat() {
+		StringBuilder fmt = new StringBuilder();
+
+		for (int i = 0; i < center.getComponentCount(); i++) {
+			Component comp = center.getComponent(i);
+			if (comp instanceof JLabel lb) {
+				fmt.append(lb.getText());
+			} else if (comp instanceof JTextField fd) {
+				fmt.append(fd.getText());
+				if (i != center.getComponentCount() - 1)
+					fmt.append(",");
+			}
+		}
+		return fmt.toString();
+	}
+	
 	public String bookmarkFormat(int position) {
 		String tagName = this.tagName.getText();
 		StringBuilder format = new StringBuilder();
@@ -221,11 +248,9 @@ public class PopupUI extends JDialog {
 
 		for (int i = 0; i < center.getComponentCount(); i++) {
 			Component comp = center.getComponent(i);
-			if (comp instanceof JLabel ) {
-				JLabel label = (JLabel) comp;
+			if (comp instanceof JLabel label) {
 				format.append(label.getText());
-			} else if (comp instanceof JTextField ) {
-				JTextField field = (JTextField) comp;
+			} else if (comp instanceof JTextField field) {
 				format.append(field.getText());
 				if (i != center.getComponentCount() - 1)
 					format.append(",");

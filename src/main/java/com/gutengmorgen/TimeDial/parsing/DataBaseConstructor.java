@@ -11,7 +11,7 @@ public class DataBaseConstructor {
 		try {
 			historydb();
 			temporaldb();
-			templatedb();
+//			templatedb();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -21,7 +21,7 @@ public class DataBaseConstructor {
 	private static void historydb() throws SQLException {
 		Connection conec = DriverManager.getConnection(DataBaseManager.HISTORY_URL);
 		Statement stm = conec.createStatement();
-		String parms = "date TEXT, time TEXT, tag TEXT, description TEXT";
+		String parms = "datetime TEXT, tag TEXT, description TEXT";
 		stm.execute("DROP TABLE IF EXISTS main");
 		stm.execute("CREATE TABLE main(id INTEGER PRIMARY KEY, " + parms + ");");
 
@@ -30,7 +30,7 @@ public class DataBaseConstructor {
 	private static void temporaldb() throws SQLException {
 		Connection conec = DriverManager.getConnection(DataBaseManager.TEMPORAL_URL);
 		Statement stm = conec.createStatement();
-		String parms = "date TEXT, time TEXT, tag TEXT, description TEXT";
+		String parms = "datetime TEXT, tag TEXT, description TEXT";
 		stm.execute("DROP TABLE IF EXISTS main");
 		stm.execute("CREATE TABLE main(id INTEGER PRIMARY KEY, " + parms + ");");
 	}
