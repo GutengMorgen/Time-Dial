@@ -134,13 +134,13 @@ public class PopupUI extends JDialog {
 		this.dispose();
 	}
 
-	public void autoFill(Tag myTags) {
+	public void autoFill(Tag data) {
 		initAutoFill();
 
 		timerHandler.restartClock();
-		tagName.setText(myTags.getName());
+		tagName.setText(data.getName());
 
-		for (Template template : myTags.getTemplates()) {
+		for (Template template : data.getTemplates()) {
 			addComponent(template.getName(), new CustomTextField(template.getHold()));
 		}
 		closeAutoFill();
@@ -158,13 +158,13 @@ public class PopupUI extends JDialog {
 		closeAutoFill();
 	}
 
-	public void autofill(Bookmark bookmark) {
+	public void autofill(Bookmark data) {
 		initAutoFill();
 
 		timerHandler.restartClock();
-		tagName.setText(bookmark.getTag().getName());
+		tagName.setText(data.getTag().getName());
 
-		for (Template template : bookmark.getTag().getTemplates()) {
+		for (Template template : data.getTag().getTemplates()) {
 			addComponent(template.getName(), new CustomTextField(template.getHold()));
 		}
 		closeAutoFill();

@@ -5,14 +5,12 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.gutengmorgen.TimeDial.parsing.DataBaseManager;
-import com.gutengmorgen.TimeDial.parsing.DataManager;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -62,7 +60,7 @@ public class History {
 	
 	public static void main(String[] args) {
 		System.out.println("start");
-		for (History history : new History().getAll()) {
+		for (History history : History.getAll()) {
 			System.out.println(history.toString());
 		}
 	}
