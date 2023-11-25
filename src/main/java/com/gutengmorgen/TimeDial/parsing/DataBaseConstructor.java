@@ -1,13 +1,22 @@
 package com.gutengmorgen.TimeDial.parsing;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DataBaseConstructor {
+	private static final String history = "history.db";
+	private static final String temporal = "template.db";
+	private static final String template = "template.db";
 
 	public static void main(String[] args) {
-
+		Connection conec = null;
+		try {
+			conec = DriverManager.getConnection("jdbc:sqlite:src/main/resources/hello.db");
+		} catch (Exception e) {
+		}
+		
 	}
 
 	private static void historydb(Connection conec) throws SQLException {
