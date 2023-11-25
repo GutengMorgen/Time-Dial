@@ -6,36 +6,41 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DataBaseConstructor {
-	private static final String history = "history.db";
-	private static final String temporal = "template.db";
-	private static final String template = "template.db";
 
 	public static void main(String[] args) {
-		Connection conec = null;
 		try {
-			conec = DriverManager.getConnection("jdbc:sqlite:src/main/resources/hello.db");
+			historydb();
+			temporaldb();
+			templatedb();
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		
+
 	}
 
-	private static void historydb(Connection conec) throws SQLException {
-		Statement sta = conec.createStatement();
-		String parms = "date TEXT, time TEXT, tag TEXT, template TEXT";
-		sta.execute("CREATE TABLE IF NOT EXISTS history(id INTEGER PRIMARY KEY," + parms + " );");
-		
+	private static void historydb() throws SQLException {
+		Connection conec = DriverManager.getConnection(DataBaseManager.HISTORY_URL);
+		Statement stm = conec.createStatement();
+		String parms = "date TEXT, time TEXT, tag TEXT, description TEXT";
+		stm.execute("DROP TABLE IF EXISTS main");
+		stm.execute("CREATE TABLE main(id INTEGER PRIMARY KEY, " + parms + ");");
+
 	}
-	
-	private static void temporaldb(Connection conec) throws SQLException {
-		Statement sta = conec.createStatement();
-		String parms = "date TEXT, time TEXT, tag TEXT, template TEXT";
-		sta.execute("CREATE TABLE IF NOT EXISTS history(id INTEGER PRIMARY KEY," + parms + " );");
+
+	private static void temporaldb() throws SQLException {
+		Connection conec = DriverManager.getConnection(DataBaseManager.TEMPORAL_URL);
+		Statement stm = conec.createStatement();
+		String parms = "date TEXT, time TEXT, tag TEXT, description TEXT";
+		stm.execute("DROP TABLE IF EXISTS main");
+		stm.execute("CREATE TABLE main(id INTEGER PRIMARY KEY, " + parms + ");");
 	}
-	
-	private static void templatedb(Connection conec) throws SQLException {
-		Statement sta = conec.createStatement();
+
+	private static void templatedb() throws SQLException {
+		Connection conec = DriverManager.getConnection(DataBaseManager.TEMPLATE_URL);
+		Statement stm = conec.createStatement();
 //		los templates tambien pueden tener un orden como los bookmarks
-		String parms = "tag TEXT, template TEXT, hold TEXT";
-		sta.execute("CREATE TABLE IF NOT EXISTS history(id INTEGER PRIMARY KEY," + parms + " );");
+		String parms = "pos INTEGER, tag TEXT, template TEXT, hold TEXT";
+		stm.execute("DROP TABLE IF EXISTS main");
+		stm.execute("CREATE TABLE main(id INTEGER PRIMARY KEY, " + parms + ");");
 	}
 }
