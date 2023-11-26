@@ -55,35 +55,34 @@ public class Temporal {
 		}
 	}
 
-	public static void saveV2(String tag, String dcpFmt) {
-		try (Connection cnt = DriverManager.getConnection(DataBaseManager.TEMPORAL_URL);) {
-			ResultSet rsl = cnt.createStatement().executeQuery("SELECT COUNT(*) FROM main");
-			PreparedStatement pstm = null;
-			String qry;
 
-			if (rsl.next()) {
-				if (rsl.getInt(1) >= limit) {
-					// replace record
-					String qryS = "SELECT id FROM main ORDER BY datetime ASC LIMIT 1;";
-					ResultSet rslS = cnt.createStatement().executeQuery(qryS);
-					if (rslS.next()) {
-						qry = "UPDATE main SET datetime=DATETIME('now','localtime'),tag=?,description=? WHERE id=?;";
-						pstm = cnt.prepareStatement(qry);
-						pstm.setString(1, tag);
-						pstm.setString(2, dcpFmt);
-						pstm.setInt(3, rslS.getInt(1));
-					}
-				} else {
-					// create more records
-					qry = "INSERT INTO main (datetime, tag, description) VALUES (DATETIME('now','localtime'),?,?);";
-					pstm = cnt.prepareStatement(qry);
+	public static void saveV2(String tag, String dcpFmt) {
+	final String COUNT = "SELECT COUNT(*) FROM main";
+	final String OLDEST_ID = "SELECT id FROM main ORDER BY datetime ASC LIMIT 1;";
+	final String UPDATE = "UPDATE main SET datetime=DATETIME('now','localtime'),tag=?,description=? WHERE id=?;";
+	final String INSERT = "INSERT INTO main (datetime, tag, description) VALUES (DATETIME('now','localtime'),?,?);";
+
+		try (Connection cnt = DriverManager.getConnection(DataBaseManager.TEMPORAL_URL);) {
+			ResultSet rsl = cnt.createStatement().executeQuery(COUNT);
+			PreparedStatement pstm = null;
+
+			if (rsl.next() && rsl.getInt(1) >= limit) {
+				// replace record
+				ResultSet rslS = cnt.createStatement().executeQuery(OLDEST_ID);
+				if (rslS.next()) {
+					pstm = cnt.prepareStatement(UPDATE);
 					pstm.setString(1, tag);
 					pstm.setString(2, dcpFmt);
+					pstm.setInt(3, rslS.getInt(1));
 				}
-
-				pstm.executeUpdate();
+			} else {
+				// create more records
+				pstm = cnt.prepareStatement(INSERT);
+				pstm.setString(1, tag);
+				pstm.setString(2, dcpFmt);
 			}
 
+			pstm.executeUpdate();
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());
 		}
