@@ -9,9 +9,9 @@ public class DataBaseConstructor {
 
 	public static void main(String[] args) {
 		try {
-			historydb();
-			temporaldb();
-//			templatedb();
+//			historydb();
+//			temporaldb();
+			templatedb();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -39,8 +39,12 @@ public class DataBaseConstructor {
 		Connection conec = DriverManager.getConnection(DataBaseManager.TEMPLATE_URL);
 		Statement stm = conec.createStatement();
 //		los templates tambien pueden tener un orden como los bookmarks
-		String parms = "pos INTEGER, tag TEXT, template TEXT, hold TEXT";
+		String parms = "pos INTEGER, tag TEXT, description TEXT";
 		stm.execute("DROP TABLE IF EXISTS main");
 		stm.execute("CREATE TABLE main(id INTEGER PRIMARY KEY, " + parms + ");");
+		stm.execute(
+				"INSERT INTO main (pos, tag, description) VALUES (1,'Studying', 'Theme:,SubTheme:,Resource:,Description:');");
+		stm.execute("INSERT INTO main (pos, tag, description) VALUES (2, 'Relax', 'Resource:,Description:');");
+		stm.execute("INSERT INTO main (pos, tag, description) VALUES (3, 'Offline', 'Activity:,Description:');");
 	}
 }

@@ -11,12 +11,11 @@ import com.gutengmorgen.TimeDial.models.Temporal;
 import com.gutengmorgen.TimeDial.models.Bookmark;
 import com.gutengmorgen.TimeDial.models.History;
 import com.gutengmorgen.TimeDial.models.Model;
-import com.gutengmorgen.TimeDial.models.Tag;
+import com.gutengmorgen.TimeDial.models.TagTemplate;
 import com.gutengmorgen.TimeDial.models.Template;
 
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.awt.event.KeyEvent;
 import java.util.List;
 import java.awt.GridBagConstraints;
 import javax.swing.JTextField;
@@ -40,8 +39,7 @@ public class PopupUI extends JDialog {
 	private JLabel tagName;
 	private JLabel timelbl;
 	private final JLabel footerlbl = new JLabel(" ");
-	public Model<Tag> modelTag = new Model<>(Tag.parsingAllLines());
-//	public Model<Temporal> modelTemp = new Model<>(Temporal.parsingAllLines());
+	public Model<TagTemplate> modelTag = new Model<>(TagTemplate.getAll());
 	public Model<Temporal> modelTemp = new Model<>(Temporal.getAll());
 	private DateHandler timerHandler = new DateHandler();
 	private final ShortcutManager shortcuts = new ShortcutManager(this, footerlbl);
@@ -134,7 +132,7 @@ public class PopupUI extends JDialog {
 		this.dispose();
 	}
 
-	public void autoFill(Tag data) {
+	public void autoFill(TagTemplate data) {
 		initAutoFill();
 
 		timerHandler.restartClock();
@@ -199,16 +197,6 @@ public class PopupUI extends JDialog {
 		center.getComponent(1).requestFocus();
 	}
 
-	@Deprecated
-	public void selectedIndex(int event, Model<?> model) {
-		if (event == KeyEvent.VK_RIGHT || event == KeyEvent.VK_UP) {
-			model.reduceIndex();
-		} else if (event == KeyEvent.VK_LEFT || event == KeyEvent.VK_DOWN) {
-			model.increaseIndex();
-		}
-//		autoFill(model.getValue());
-	}
-
 	public void selectedIndexBookmark(int position) {
 		Bookmark bookmark = Bookmark.parsing().stream()
 				.filter(b -> b.getTag().getName().equals(tagName.getText()) && b.getPosition() == position).findFirst()
@@ -220,6 +208,7 @@ public class PopupUI extends JDialog {
 	public void saveDescription() {
 		String tag = this.tagName.getText();
 		String dcp = descriptionFormat();
+
 		Temporal.save(tag, dcp);
 		History.save(tag, dcp);
 	}
