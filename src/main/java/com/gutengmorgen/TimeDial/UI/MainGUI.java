@@ -1,4 +1,4 @@
-package com.gutengmorgen.TimeDial;
+package com.gutengmorgen.TimeDial.UI;
 
 import java.awt.Dimension;
 import java.awt.EventQueue;
@@ -26,9 +26,9 @@ import java.awt.Insets;
 import javax.swing.JTextArea;
 import javax.swing.JButton;
 
-public class MainFrame extends JFrame {
+public class MainGUI extends JFrame {
 	private static final long serialVersionUID = 1L;
-	private static MainFrame instance;
+	private static MainGUI instance;
 	private JPanel contentPane;
 	private JToggleButton toggleBtn;
 	public JLabel description = new JLabel(" ");
@@ -40,7 +40,7 @@ public class MainFrame extends JFrame {
 			public void run() {
 				try {
 					UIManager.setLookAndFeel("com.sun.java.swing.plaf.gtk.GTKLookAndFeel");
-					MainFrame frame = new MainFrame();
+					MainGUI frame = new MainGUI();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -49,13 +49,13 @@ public class MainFrame extends JFrame {
 		});
 	}
 
-	public static MainFrame getInstance() {
+	public static MainGUI getInstance() {
 		if(instance == null)
-			instance = new MainFrame();
+			instance = new MainGUI();
 		return instance;
 	}
 	
-	public MainFrame() {
+	public MainGUI() {
 		instance = this;
 		timerHandler = new TimerHandler(this, 15);
 		setTitle("Time Dial");

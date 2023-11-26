@@ -5,8 +5,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.Timer;
 
-import com.gutengmorgen.TimeDial.MainFrame;
-import com.gutengmorgen.TimeDial.PopupUI;
+import com.gutengmorgen.TimeDial.UI.MainGUI;
+import com.gutengmorgen.TimeDial.UI.PopupUI;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -20,7 +20,7 @@ public class TimerHandler {
 	private final Timer timer;
 	private final static String format = "Time to appear: %02d: %02d";
 
-	public TimerHandler(MainFrame frame, int periodMinutes) {
+	public TimerHandler(MainGUI frame, int periodMinutes) {
 		this.periodMinutes = periodMinutes;
 		minutes = getPeriodMinutes();
 		timer = new Timer(1000, new ActionListener() {

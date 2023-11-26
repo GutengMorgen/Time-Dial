@@ -1,4 +1,4 @@
-package com.gutengmorgen.TimeDial;
+package com.gutengmorgen.TimeDial.UI;
 
 import java.awt.AWTException;
 import java.awt.Image;

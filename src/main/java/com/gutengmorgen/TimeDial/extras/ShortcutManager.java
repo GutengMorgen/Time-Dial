@@ -8,7 +8,7 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.KeyStroke;
 
-import com.gutengmorgen.TimeDial.PopupUI;
+import com.gutengmorgen.TimeDial.UI.PopupUI;
 import com.gutengmorgen.TimeDial.parsing.DataManager;
 
 @SuppressWarnings("serial")

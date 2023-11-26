@@ -39,6 +39,7 @@ public class DataBaseConstructor {
 		Connection conec = DriverManager.getConnection(DataBaseManager.TEMPLATE_URL);
 		Statement stm = conec.createStatement();
 //		los templates tambien pueden tener un orden como los bookmarks
+		//create second table for the bookmarks
 		String parms = "pos INTEGER, tag TEXT, description TEXT";
 		stm.execute("DROP TABLE IF EXISTS main");
 		stm.execute("CREATE TABLE main(id INTEGER PRIMARY KEY, " + parms + ");");

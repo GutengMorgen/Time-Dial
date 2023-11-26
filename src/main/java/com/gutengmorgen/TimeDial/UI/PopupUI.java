@@ -1,4 +1,4 @@
-package com.gutengmorgen.TimeDial;
+package com.gutengmorgen.TimeDial.UI;
 
 import javax.swing.JComponent;
 import javax.swing.JDialog;
@@ -49,7 +49,7 @@ public class PopupUI extends JDialog {
 			@Override
 			public void run() {
 				try {
-					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+					UIManager.setLookAndFeel("com.sun.java.swing.plaf.gtk.GTKLookAndFeel");
 					PopupUI dialog = new PopupUI();
 					dialog.setVisible(true);
 				} catch (Exception e) {
