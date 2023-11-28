@@ -11,7 +11,8 @@ public class DataBaseConstructor {
 		try {
 //			historydb();
 //			temporaldb();
-			templatedb();
+//			templatedb();
+			bookmarkdb();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -47,5 +48,13 @@ public class DataBaseConstructor {
 				"INSERT INTO main (pos, tag, description) VALUES (1,'Studying', 'Theme:,SubTheme:,Resource:,Description:');");
 		stm.execute("INSERT INTO main (pos, tag, description) VALUES (2, 'Relax', 'Resource:,Description:');");
 		stm.execute("INSERT INTO main (pos, tag, description) VALUES (3, 'Offline', 'Activity:,Description:');");
+	}
+	
+	private static void bookmarkdb() throws SQLException {
+		Connection conec = DriverManager.getConnection(DataBaseManager.TEMPLATE_URL);
+		Statement stm = conec.createStatement();
+		String parms = "pos INTEGER, tag TEXT, description TEXT";
+		stm.execute("DROP TABLE IF EXISTS bookmark");
+		stm.execute("CREATE TABLE bookmark(id INTEGER PRIMARY KEY, " + parms + ");");
 	}
 }
