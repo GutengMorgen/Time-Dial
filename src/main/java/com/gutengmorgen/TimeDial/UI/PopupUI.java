@@ -160,9 +160,9 @@ public class PopupUI extends JDialog {
 		initAutoFill();
 
 		timerHandler.restartClock();
-		tagName.setText(data.getTag().getName());
+		tagName.setText(data.getName());
 
-		for (Template template : data.getTag().getTemplates()) {
+		for (Template template : data.getTemplates()) {
 			addComponent(template.getName(), new CustomTextField(template.getHold()));
 		}
 		closeAutoFill();
@@ -195,14 +195,6 @@ public class PopupUI extends JDialog {
 		pack();
 		shortcuts.nav((JComponent) center.getComponent(1));
 		center.getComponent(1).requestFocus();
-	}
-
-	public void selectedIndexBookmark(int position) {
-		Bookmark bookmark = Bookmark.parsing().stream()
-				.filter(b -> b.getTag().getName().equals(tagName.getText()) && b.getPosition() == position).findFirst()
-				.orElse(null);
-		if (bookmark != null)
-			autofill(bookmark);
 	}
 
 	public void saveDescription() {
@@ -249,10 +241,18 @@ public class PopupUI extends JDialog {
 		return format.toString();
 	}
 
+	public void selectedIndexBookmark(int position) {
+		Bookmark bookmark = Bookmark.getAll().stream()
+				.filter(b -> b.getName().equals(tagName.getText()) && b.getPosition() == position).findFirst()
+				.orElse(null);
+		if (bookmark != null)
+			autofill(bookmark);
+	}
+
 	public boolean filter(int position) {
-		List<Bookmark> list = Bookmark.parsing();
+		List<Bookmark> list = Bookmark.getAll();
 		Bookmark bookmark = list.stream()
-				.filter(b -> b.getTag().getName().equals(tagName.getText()) && b.getPosition() == position).findFirst()
+				.filter(b -> b.getName().equals(tagName.getText()) && b.getPosition() == position).findFirst()
 				.orElse(null);
 		list.indexOf(bookmark);
 		if (bookmark == null)
@@ -262,9 +262,9 @@ public class PopupUI extends JDialog {
 	}
 
 	public int getIndex(int position) {
-		List<Bookmark> list = Bookmark.parsing();
+		List<Bookmark> list = Bookmark.getAll();
 		Bookmark bookmark = list.stream()
-				.filter(b -> b.getTag().getName().equals(tagName.getText()) && b.getPosition() == position).findFirst()
+				.filter(b -> b.getName().equals(tagName.getText()) && b.getPosition() == position).findFirst()
 				.orElse(null);
 		if (bookmark == null)
 			return -1;

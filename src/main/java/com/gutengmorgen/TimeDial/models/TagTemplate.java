@@ -16,6 +16,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class TagTemplate {
+	private int position;
 	private String name;
 	private List<Template> templates;
 
@@ -25,7 +26,7 @@ public class TagTemplate {
 			ResultSet rst = cnt.createStatement().executeQuery("SELECT * FROM main");
 
 			while (rst.next()) {
-				list.add(new TagTemplate(rst.getString(3), Template.convert(rst.getString(4), false)));
+				list.add(new TagTemplate(rst.getInt(2), rst.getString(3), Template.convert(rst.getString(4), false)));
 			}
 			return list;
 		} catch (Exception e) {
