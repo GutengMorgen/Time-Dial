@@ -79,67 +79,72 @@ public class ShortcutManager {
 			}
 		});
 
-		mappingGetBookmark(comp);
-		mappingSetBookmark(comp);
-		mappingOverrideBookmark(comp);
+		// set shortcuts for bookmark
+		for (byte i = 0; i < keycodes.length; i++) {
+			final byte index = i;
+			changeKeyStroke(comp, i, index, 'g');
+			changeKeyStroke(comp, i, index, 's');
+			changeKeyStroke(comp, i, index, 'o');
+		}
 	}
 
-	private void mappingGetBookmark(JComponent comp) {
-		for (int i = 0; i < keycodes.length; i++) {
-			final int index = i;
+	private void changeKeyStroke(JComponent comp, byte i, byte index, char operation) {
+		if (operation == 'g') {
 			KeyStroke stroke = KeyStroke.getKeyStroke(keycodes[i], 0);
 			comp.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(stroke, getBookmark + i);
 			comp.getActionMap().put(getBookmark + i, new AbstractAction() {
+
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					if (!popup.filter(index)) {
-						popup.selectedIndexBookmark(index);
-						footer.setText("Get bookmark: " + index);
-					} else {
-						footer.setText("Bookmark in index: " + index + " doesnt exist.");
-					}
+					getBookmark(comp, index);
 				}
 			});
-		}
-	}
-
-	private void mappingSetBookmark(JComponent comp) {
-		for (int i = 0; i < keycodes.length; i++) {
-			final int index = i;
+		} else if (operation == 's') {
 			KeyStroke stroke = KeyStroke.getKeyStroke(keycodes[i], ctrlCode);
 			comp.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(stroke, setBookmark + i);
 			comp.getActionMap().put(setBookmark + i, new AbstractAction() {
+
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					if (popup.checkText() && popup.filter(index)) {
-						String format = popup.bookmarkFormat(index);
-						DataManager.appendToFile(format, DataManager.BOOKMARK);
-						footer.setText("Set bookmark in index: " + index);
-					} else {
-						footer.setText("Bookmark all ready exist in index: " + index);
-					}
+					setBookmark(comp, index);
+				}
+			});
+		} else if (operation == 'o') {
+			KeyStroke stroke = KeyStroke.getKeyStroke(keycodes[i], ctrlCode | shiftCode);
+			comp.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(stroke, overrideBookmark + i);
+			comp.getActionMap().put(overrideBookmark + i, new AbstractAction() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					overrideBookmark(comp, index);
 				}
 			});
 		}
 	}
 
-	private void mappingOverrideBookmark(JComponent comp) {
-		for (int i = 0; i < keycodes.length; i++) {
-			final int index = i;
-			KeyStroke stroke = KeyStroke.getKeyStroke(keycodes[i], ctrlCode | shiftCode);
-			comp.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(stroke, overrideBookmark + i);
-			comp.getActionMap().put(overrideBookmark + i, new AbstractAction() {
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					if (popup.checkText()) {
-						String format = popup.bookmarkFormat(index);
-						DataManager.updateLine(popup.getIndex(index), format, DataManager.BOOKMARK);
-						footer.setText("Override bookmark in index: " + index);
-					} else {
-						footer.setText("Can not override bookmark with empty holds");
-					}
-				}
-			});
-		}
+	private void getBookmark(JComponent comp, byte index) {
+		if (!popup.filter(index)) {
+			popup.selectedIndexBookmark(index);
+			footer.setText("Get bookmark: " + index);
+		} else
+			footer.setText("Bookmark in index: " + index + " doesnt exist.");
+	}
+
+	private void setBookmark(JComponent comp, byte index) {
+		if (popup.checkText() && popup.filter(index)) {
+			String format = popup.bookmarkFormat(index);
+			DataManager.appendToFile(format, DataManager.BOOKMARK);
+			footer.setText("Set bookmark in index: " + index);
+		} else
+			footer.setText("Bookmark all ready exist in index: " + index);
+	}
+
+	private void overrideBookmark(JComponent comp, byte index) {
+		if (popup.checkText()) {
+			String format = popup.bookmarkFormat(index);
+			DataManager.updateLine(popup.getIndex(index), format, DataManager.BOOKMARK);
+			footer.setText("Override bookmark in index: " + index);
+		} else
+			footer.setText("Can not override bookmark with empty holds");
 	}
 }

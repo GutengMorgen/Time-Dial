@@ -26,8 +26,8 @@ import java.awt.Insets;
 import javax.swing.JTextArea;
 import javax.swing.JButton;
 
+@SuppressWarnings("serial")
 public class MainGUI extends JFrame {
-	private static final long serialVersionUID = 1L;
 	private static MainGUI instance;
 	private JPanel contentPane;
 	private JToggleButton toggleBtn;

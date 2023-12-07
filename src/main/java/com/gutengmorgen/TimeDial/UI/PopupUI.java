@@ -30,13 +30,13 @@ import java.awt.Dimension;
 import javax.swing.border.EmptyBorder;
 
 public class PopupUI extends JDialog {
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 407462726425164732L;
 
 	private final JPanel content = new JPanel();
 	private final GridBagConstraints cons = new GridBagConstraints();
-	private int rowIndex = 0;
+	private byte rowIndex = 0;
 	private JPanel center;
-	private JLabel tagName;
+	public JLabel tagName;
 	private JLabel timelbl;
 	private final JLabel footerlbl = new JLabel(" ");
 	public Model<TagTemplate> modelTag = new Model<>(TagTemplate.getAll());
@@ -209,7 +209,7 @@ public class PopupUI extends JDialog {
 	private String descriptionFormat() {
 		StringBuilder fmt = new StringBuilder();
 
-		for (int i = 0; i < center.getComponentCount(); i++) {
+		for (byte i = 0; i < center.getComponentCount(); i++) {
 			Component comp = center.getComponent(i);
 			if (comp instanceof JLabel lb) {
 				fmt.append(lb.getText());
@@ -222,13 +222,13 @@ public class PopupUI extends JDialog {
 		return fmt.toString();
 	}
 	
-	public String bookmarkFormat(int position) {
+	public String bookmarkFormat(byte position) {
 		String tagName = this.tagName.getText();
 		StringBuilder format = new StringBuilder();
 		format.append(position + ";");
 		format.append(tagName + ";");
 
-		for (int i = 0; i < center.getComponentCount(); i++) {
+		for (byte i = 0; i < center.getComponentCount(); i++) {
 			Component comp = center.getComponent(i);
 			if (comp instanceof JLabel label) {
 				format.append(label.getText());
@@ -241,7 +241,7 @@ public class PopupUI extends JDialog {
 		return format.toString();
 	}
 
-	public void selectedIndexBookmark(int position) {
+	public void selectedIndexBookmark(byte position) {
 		Bookmark bookmark = Bookmark.getAll().stream()
 				.filter(b -> b.getName().equals(tagName.getText()) && b.getPosition() == position).findFirst()
 				.orElse(null);
@@ -249,7 +249,7 @@ public class PopupUI extends JDialog {
 			autofill(bookmark);
 	}
 
-	public boolean filter(int position) {
+	public boolean filter(byte position) {
 		List<Bookmark> list = Bookmark.getAll();
 		Bookmark bookmark = list.stream()
 				.filter(b -> b.getName().equals(tagName.getText()) && b.getPosition() == position).findFirst()
@@ -261,7 +261,7 @@ public class PopupUI extends JDialog {
 			return false;
 	}
 
-	public int getIndex(int position) {
+	public int getIndex(byte position) {
 		List<Bookmark> list = Bookmark.getAll();
 		Bookmark bookmark = list.stream()
 				.filter(b -> b.getName().equals(tagName.getText()) && b.getPosition() == position).findFirst()
