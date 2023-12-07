@@ -16,6 +16,7 @@ public class ShortcutManager {
 	private final PopupUI popup;
 	private final JLabel footer;
 	private final int ctrlCode = KeyEvent.CTRL_DOWN_MASK;
+	private final int altgrCode = KeyEvent.ALT_GRAPH_DOWN_MASK;
 	private final int shiftCode = KeyEvent.SHIFT_DOWN_MASK;
 	private final int[] keycodes = { KeyEvent.VK_F1, KeyEvent.VK_F2, KeyEvent.VK_F3, KeyEvent.VK_F4, KeyEvent.VK_F5,
 			KeyEvent.VK_F6, KeyEvent.VK_F7, KeyEvent.VK_F8, KeyEvent.VK_F9, KeyEvent.VK_F10, KeyEvent.VK_F11,
@@ -100,7 +101,7 @@ public class ShortcutManager {
 				}
 			});
 		} else if (operation == 's') {
-			KeyStroke stroke = KeyStroke.getKeyStroke(keycodes[i], ctrlCode);
+			KeyStroke stroke = KeyStroke.getKeyStroke(keycodes[i], altgrCode);
 			comp.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(stroke, setBookmark + i);
 			comp.getActionMap().put(setBookmark + i, new AbstractAction() {
 
@@ -131,12 +132,14 @@ public class ShortcutManager {
 	}
 
 	private void setBookmark(JComponent comp, byte index) {
-		if (popup.checkText() && popup.filter(index)) {
-			String format = popup.bookmarkFormat(index);
-			DataManager.appendToFile(format, DataManager.BOOKMARK);
-			footer.setText("Set bookmark in index: " + index);
-		} else
-			footer.setText("Bookmark all ready exist in index: " + index);
+		popup.filter(index);
+		popup.getIndex(index);
+//		if (popup.checkText() && popup.filter(index)) {
+//			String format = popup.bookmarkFormat(index);
+//			DataManager.appendToFile(format, DataManager.BOOKMARK);
+//			footer.setText("Set bookmark in index: " + index);
+//		} else
+//			footer.setText("Bookmark all ready exist in index: " + index);
 	}
 
 	private void overrideBookmark(JComponent comp, byte index) {

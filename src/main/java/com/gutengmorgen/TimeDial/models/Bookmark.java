@@ -2,6 +2,7 @@ package com.gutengmorgen.TimeDial.models;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,5 +35,67 @@ public class Bookmark {
 		} catch (Exception e) {
 			throw new RuntimeException(e.getMessage());
 		}
+	}
+	
+	public static Bookmark selectByPosAndTag(byte pos, String tName) {
+		try (Connection cnt = DriverManager.getConnection(DataBaseManager.TEMPLATE_URL)) {
+			Bookmark bookmark = null;
+
+			PreparedStatement pstm = cnt.prepareStatement("SELECT * FROM bookmark WHERE tag=? AND pos=?");
+			pstm.setString(1, tName);
+			pstm.setInt(2, pos);
+			ResultSet rst = pstm.executeQuery();
+
+			while (rst.next()) {
+				bookmark = new Bookmark(rst.getInt(2), rst.getString(3), Template.convert(rst.getString(4), true));
+			}
+			return bookmark;
+		} catch (Exception e) {
+			throw new RuntimeException(e.getMessage());
+		}
+	}
+
+	public static int getIdByPosAndTag(byte pos, String tName) {
+		try (Connection cnt = DriverManager.getConnection(DataBaseManager.TEMPLATE_URL)) {
+			int id = -1;
+
+			PreparedStatement pstm = cnt.prepareStatement("SELECT id FROM bookmark WHERE tag=? AND pos=?");
+			pstm.setString(1, tName);
+			pstm.setInt(2, pos);
+			ResultSet rst = pstm.executeQuery();
+
+			while (rst.next()) {
+				id = rst.getInt(1);
+			}
+			return id;
+		} catch (Exception e) {
+			throw new RuntimeException(e.getMessage());
+		}
+	}
+	
+	
+	public static boolean checkBookmark(byte pos, String tName) {
+		try (Connection cnt = DriverManager.getConnection(DataBaseManager.TEMPLATE_URL)) {
+			boolean exits = false;
+
+			PreparedStatement pstm = cnt.prepareStatement("SELECT * FROM bookmark WHERE tag=? AND pos=?");
+			pstm.setString(1, tName);
+			pstm.setInt(2, pos);
+			ResultSet rst = pstm.executeQuery();
+
+			while (rst.next()) {
+				System.out.println("bookmark exits");
+				exits = true;
+			}
+			
+			return exits;
+		} catch (Exception e) {
+			throw new RuntimeException(e.getMessage());
+		}
+	}
+	
+	@Override
+	public String toString() {
+		return "Bookmark [position=" + position + ", name=" + name + "]";
 	}
 }

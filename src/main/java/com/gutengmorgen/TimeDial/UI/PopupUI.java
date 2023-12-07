@@ -129,7 +129,7 @@ public class PopupUI extends JDialog {
 //		saveToBookmark();
 //		MainFrame.getInstance().timerHandler.restart();
 //		saveDescription();
-		this.dispose();
+		System.exit(0);
 	}
 
 	public void autoFill(TagTemplate data) {
@@ -204,8 +204,7 @@ public class PopupUI extends JDialog {
 		Temporal.save(tag, dcp);
 		History.save(tag, dcp);
 	}
-	
-	
+
 	private String descriptionFormat() {
 		StringBuilder fmt = new StringBuilder();
 
@@ -221,7 +220,7 @@ public class PopupUI extends JDialog {
 		}
 		return fmt.toString();
 	}
-	
+
 	public String bookmarkFormat(byte position) {
 		String tagName = this.tagName.getText();
 		StringBuilder format = new StringBuilder();
@@ -242,34 +241,19 @@ public class PopupUI extends JDialog {
 	}
 
 	public void selectedIndexBookmark(byte position) {
-		Bookmark bookmark = Bookmark.getAll().stream()
-				.filter(b -> b.getName().equals(tagName.getText()) && b.getPosition() == position).findFirst()
-				.orElse(null);
+		Bookmark bookmark = Bookmark.selectByPosAndTag(position, tagName.getText());
 		if (bookmark != null)
 			autofill(bookmark);
 	}
 
 	public boolean filter(byte position) {
-		List<Bookmark> list = Bookmark.getAll();
-		Bookmark bookmark = list.stream()
-				.filter(b -> b.getName().equals(tagName.getText()) && b.getPosition() == position).findFirst()
-				.orElse(null);
-		list.indexOf(bookmark);
-		if (bookmark == null)
-			return true;
-		else
-			return false;
+		return Bookmark.checkBookmark(position, tagName.getText());
 	}
 
 	public int getIndex(byte position) {
-		List<Bookmark> list = Bookmark.getAll();
-		Bookmark bookmark = list.stream()
-				.filter(b -> b.getName().equals(tagName.getText()) && b.getPosition() == position).findFirst()
-				.orElse(null);
-		if (bookmark == null)
-			return -1;
-		else
-			return list.indexOf(bookmark);
+		int id = Bookmark.getIdByPosAndTag(position, tagName.getText());
+		System.out.println(id);
+		return id;
 	}
 }
 
