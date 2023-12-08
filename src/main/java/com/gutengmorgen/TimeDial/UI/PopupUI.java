@@ -3,10 +3,9 @@ package com.gutengmorgen.TimeDial.UI;
 import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
-import javax.swing.UIManager;
 
-import com.gutengmorgen.TimeDial.extras.ShortcutManager;
 import com.gutengmorgen.TimeDial.extras.DateHandler;
+import com.gutengmorgen.TimeDial.extras.KeyStrokeFooter;
 import com.gutengmorgen.TimeDial.models.Temporal;
 import com.gutengmorgen.TimeDial.models.Bookmark;
 import com.gutengmorgen.TimeDial.models.History;
@@ -16,7 +15,6 @@ import com.gutengmorgen.TimeDial.models.Template;
 
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.util.List;
 import java.awt.GridBagConstraints;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
@@ -26,6 +24,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Font;
 
 import javax.swing.border.EmptyBorder;
 
@@ -38,18 +37,17 @@ public class PopupUI extends JDialog {
 	private JPanel center;
 	public JLabel tagName;
 	private JLabel timelbl;
-	private final JLabel footerlbl = new JLabel(" ");
+	private final JTextField footer = new JTextField("");
 	public Model<TagTemplate> modelTag = new Model<>(TagTemplate.getAll());
 	public Model<Temporal> modelTemp = new Model<>(Temporal.getAll());
 	private DateHandler timerHandler = new DateHandler();
-	private final ShortcutManager shortcuts = new ShortcutManager(this, footerlbl);
 
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {
 				try {
-					UIManager.setLookAndFeel("com.sun.java.swing.plaf.gtk.GTKLookAndFeel");
+//					UIManager.setLookAndFeel("com.sun.java.swing.plaf.gtk.GTKLookAndFeel");
 					PopupUI dialog = new PopupUI();
 					dialog.setVisible(true);
 				} catch (Exception e) {
@@ -78,6 +76,7 @@ public class PopupUI extends JDialog {
 		bar.setLayout(gbl_bar);
 
 		timelbl = new JLabel();
+		timelbl.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		timerHandler.setClock(timelbl);
 		GridBagConstraints gbc_timelbl = new GridBagConstraints();
 		gbc_timelbl.anchor = GridBagConstraints.WEST;
@@ -87,6 +86,7 @@ public class PopupUI extends JDialog {
 		bar.add(timelbl, gbc_timelbl);
 
 		JLabel taglbl = new JLabel("Tag:");
+		taglbl.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		GridBagConstraints gbc_taglbl = new GridBagConstraints();
 		gbc_taglbl.insets = new Insets(0, 0, 0, 2);
 		gbc_taglbl.gridx = 1;
@@ -94,6 +94,7 @@ public class PopupUI extends JDialog {
 		bar.add(taglbl, gbc_taglbl);
 
 		tagName = new JLabel();
+		tagName.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		GridBagConstraints gbc_tagName = new GridBagConstraints();
 		gbc_tagName.anchor = GridBagConstraints.WEST;
 		gbc_tagName.gridx = 2;
@@ -105,12 +106,15 @@ public class PopupUI extends JDialog {
 		content.add(center, BorderLayout.CENTER);
 		center.setLayout(new GridBagLayout());
 
-		footerlbl.setBorder(new EmptyBorder(0, 2, 0, 2));
-		footerlbl.setOpaque(true);
-		footerlbl.setBackground(new Color(225, 225, 225));
-		content.add(footerlbl, BorderLayout.SOUTH);
+//		footer.setEditable(false);
+		footer.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		footer.setBackground(new Color(222, 221, 218));
+		footer.setBorder(new EmptyBorder(2, 2, 2, 2));
+		content.add(footer, BorderLayout.SOUTH);
 
 		autoFill(modelTag.getValue());
+
+		new KeyStrokeFooter(this, footer);
 	}
 
 	public boolean checkText() {
@@ -175,7 +179,9 @@ public class PopupUI extends JDialog {
 		cons.weightx = 0.0;
 		cons.fill = GridBagConstraints.VERTICAL;
 		cons.anchor = GridBagConstraints.WEST;
-		center.add(new JLabel(name), cons);
+		JLabel label = new JLabel(name);
+		label.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		center.add(label, cons);
 
 		cons.gridx = 1;
 		cons.weightx = 1.0;
@@ -193,8 +199,7 @@ public class PopupUI extends JDialog {
 	private void closeAutoFill() {
 		rowIndex = 0;
 		pack();
-		shortcuts.nav((JComponent) center.getComponent(1));
-		center.getComponent(1).requestFocus();
+		footer.requestFocus();
 	}
 
 	public void saveDescription() {
@@ -205,7 +210,8 @@ public class PopupUI extends JDialog {
 		History.save(tag, dcp);
 	}
 
-	private String descriptionFormat() {
+	//TODO: rename with templateFormat?
+	public String descriptionFormat() {
 		StringBuilder fmt = new StringBuilder();
 
 		for (byte i = 0; i < center.getComponentCount(); i++) {
@@ -221,27 +227,9 @@ public class PopupUI extends JDialog {
 		return fmt.toString();
 	}
 
-	public String bookmarkFormat(byte position) {
-		String tagName = this.tagName.getText();
-		StringBuilder format = new StringBuilder();
-		format.append(position + ";");
-		format.append(tagName + ";");
-
-		for (byte i = 0; i < center.getComponentCount(); i++) {
-			Component comp = center.getComponent(i);
-			if (comp instanceof JLabel label) {
-				format.append(label.getText());
-			} else if (comp instanceof JTextField field) {
-				format.append(field.getText());
-				if (i != center.getComponentCount() - 1)
-					format.append(",");
-			}
-		}
-		return format.toString();
-	}
-
-	public void selectedIndexBookmark(byte position) {
+	public void selectBookmark(byte position) {
 		Bookmark bookmark = Bookmark.selectByPosAndTag(position, tagName.getText());
+		System.out.println(bookmark.toString());
 		if (bookmark != null)
 			autofill(bookmark);
 	}
@@ -261,6 +249,7 @@ public class PopupUI extends JDialog {
 class CustomTextField extends JTextField {
 	public CustomTextField(String text) {
 		setText(text);
+		setFont(new Font("Tahoma", Font.PLAIN, 11));
 		setBackground(new Color(242, 242, 242));
 		setBorder(new EmptyBorder(5, 5, 5, 5));
 		setPreferredSize(new Dimension(250, getPreferredSize().height));

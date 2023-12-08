@@ -83,7 +83,7 @@ public class Bookmark {
 			pstm.setInt(2, pos);
 			ResultSet rst = pstm.executeQuery();
 
-			while (rst.next()) {
+			if(rst.next()) {
 				System.out.println("bookmark exits");
 				exits = true;
 			}
@@ -94,8 +94,34 @@ public class Bookmark {
 		}
 	}
 	
+	public static void createBookmark(byte pos, String tag, String description) {
+		final String INSERT = "INSERT INTO bookmark (pos, tag, description) VALUES (?,?,?);";
+		try (Connection cnt = DriverManager.getConnection(DataBaseManager.TEMPLATE_URL)) {
+			PreparedStatement pstm = cnt.prepareStatement(INSERT);
+			pstm.setInt(1, pos);
+			pstm.setString(2, tag);
+			pstm.setString(3, description);
+			pstm.executeUpdate();
+		} catch (Exception e) {
+			throw new RuntimeException(e.getMessage());
+		}
+	}
+	
+	public static void updateBookmark(byte pos, String tag, String description) {
+		final String UPDATE = "UPDATE bookmark SET tag=?, description=? WHERE pos=?;";
+		try (Connection cnt = DriverManager.getConnection(DataBaseManager.TEMPLATE_URL)) {
+			PreparedStatement pstm = cnt.prepareStatement(UPDATE);
+			pstm.setString(1, tag);
+			pstm.setString(2, description);
+			pstm.setInt(3, pos);
+			pstm.executeUpdate();
+		} catch (Exception e) {
+			throw new RuntimeException(e.getMessage());
+		}
+	}
+
 	@Override
 	public String toString() {
-		return "Bookmark [position=" + position + ", name=" + name + "]";
+		return "Bookmark [position=" + position + ", name=" + name + ", templates=" + templates + "]";
 	}
 }
