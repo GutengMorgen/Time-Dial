@@ -9,8 +9,6 @@ import java.awt.Toolkit;
 import java.awt.TrayIcon;
 
 import javax.swing.JFrame;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 
 public class TrayUI {
 	private PopupMenu popupMenu;

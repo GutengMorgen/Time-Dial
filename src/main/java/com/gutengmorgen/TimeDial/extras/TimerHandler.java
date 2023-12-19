@@ -8,12 +8,7 @@ import javax.swing.Timer;
 import com.gutengmorgen.TimeDial.UI.MainGUI;
 import com.gutengmorgen.TimeDial.UI.PopupUI;
 
-import lombok.Getter;
-import lombok.Setter;
-
 public class TimerHandler {
-	@Getter
-	@Setter
 	private int periodMinutes;
 	private int minutes = 0;
 	private int seconds = 0;
@@ -63,5 +58,13 @@ public class TimerHandler {
 			minutes = getPeriodMinutes();
 			seconds = 0;
 		}
+	}
+
+	public int getPeriodMinutes(){
+		return periodMinutes;
+	}
+
+	public void setPeriodMinutes(int periodMinutes){
+		this.periodMinutes = periodMinutes;
 	}
 }

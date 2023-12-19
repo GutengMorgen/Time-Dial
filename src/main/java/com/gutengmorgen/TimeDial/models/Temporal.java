@@ -11,18 +11,41 @@ import java.util.List;
 
 import com.gutengmorgen.TimeDial.parsing.DataBaseManager;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-
-@Getter
-@Setter
-@AllArgsConstructor
 public class Temporal {
+	public static int LIMIT = 10;
 	private LocalDateTime dateTime;
 	private String tag;
 	private List<Template> templates;
-	public static int limit = 10;
+
+	public Temporal(LocalDateTime dateTime, String tag, List<Template> templates) {
+		this.dateTime = dateTime;
+		this.tag = tag;
+		this.templates = templates;
+	}
+
+	public LocalDateTime getDateTime(){
+		return dateTime;
+	}
+
+	public void setDateTime(LocalDateTime dateTime){
+		this.dateTime = dateTime;
+	}
+
+	public String getTag(){
+		return tag;
+	}
+
+	public void setTag(String tag){
+		this.tag = tag;
+	}
+
+	public List<Template> getTemplates(){
+		return templates;
+	}
+
+	public void setTemplates(List<Template> templates){
+		this.templates = templates;
+	}
 
 	public static List<Temporal> getAll() {
 		List<Temporal> l = new ArrayList<>();
@@ -50,7 +73,7 @@ public class Temporal {
 			ResultSet rsl = cnt.createStatement().executeQuery(COUNT);
 			PreparedStatement pstm = null;
 
-			if (rsl.next() && rsl.getInt(1) >= limit) {
+			if (rsl.next() && rsl.getInt(1) >= LIMIT) {
 				// replace record
 				ResultSet rslS = cnt.createStatement().executeQuery(OLDEST_ID);
 				if (rslS.next()) {

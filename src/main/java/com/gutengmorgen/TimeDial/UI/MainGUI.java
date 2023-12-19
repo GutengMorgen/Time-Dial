@@ -26,7 +26,6 @@ import java.awt.Insets;
 import javax.swing.JTextArea;
 import javax.swing.JButton;
 
-@SuppressWarnings("serial")
 public class MainGUI extends JFrame {
 	private static MainGUI instance;
 	private JPanel contentPane;
@@ -39,7 +38,10 @@ public class MainGUI extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					UIManager.setLookAndFeel("com.sun.java.swing.plaf.gtk.GTKLookAndFeel");
+					// for (Object obj : UIManager.getInstalledLookAndFeels()) {
+					// 	System.out.println(obj.toString());
+					// }
+					UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsClassicLookAndFeel");
 					MainGUI frame = new MainGUI();
 					frame.setVisible(true);
 				} catch (Exception e) {

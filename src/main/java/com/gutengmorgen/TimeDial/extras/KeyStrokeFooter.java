@@ -11,7 +11,6 @@ import javax.swing.KeyStroke;
 import com.gutengmorgen.TimeDial.UI.PopupUI;
 import com.gutengmorgen.TimeDial.models.Bookmark;
 
-@SuppressWarnings("serial")
 public class KeyStrokeFooter {
 	private final PopupUI popup;
 	private final JTextField footer;

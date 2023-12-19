@@ -9,19 +9,43 @@ import java.util.List;
 
 import com.gutengmorgen.TimeDial.parsing.DataBaseManager;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 public class Bookmark {
 	private int position;
 	private String name;
 	private List<Template> templates;
+
+	public Bookmark(){
+	}
+
+	public Bookmark(int position, String name, List<Template> templates){
+		this.position = position;
+		this.name = name;
+		this.templates = templates;
+	}
+
+	public int getPosition(){
+		return position;
+	}
+
+	public void setPosition(int position){
+		this.position = position;
+	}
+
+	public String getName(){
+		return name;
+	}
+
+	public void setName(String name){
+		this.name = name;
+	}
+
+	public List<Template> getTemplates(){
+		return templates;
+	}
+
+	public void setTemplates(List<Template> templates){
+		this.templates = templates;
+	}
 	
 	public static List<Bookmark> getAll() {
 		List<Bookmark> l = new ArrayList<>();

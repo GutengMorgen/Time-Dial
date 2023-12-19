@@ -12,17 +12,43 @@ import java.util.List;
 
 import com.gutengmorgen.TimeDial.parsing.DataBaseManager;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-
-@Getter
-@Setter
-@AllArgsConstructor
 public class History {
 	private LocalDateTime dateTime;
 	private String tag;
 	private List<Template> templates;
+
+	public History(){
+	}
+
+	public History(LocalDateTime dateTime, String tag, List<Template> templates){
+		this.dateTime = dateTime;
+		this.tag = tag;
+		this.templates = templates;
+	}
+
+	public void setDateTime(LocalDateTime dateTime){
+		this.dateTime = dateTime;
+	}
+
+	public LocalDateTime getDateTime(){
+		return dateTime;
+	}
+
+	public void setTag(String tag){
+		this.tag = tag;
+	}
+
+	public String getTag(){
+		return tag;
+	}
+
+	public List<Template> getTemplates(){
+		return templates;
+	}
+
+	public void setTemplates(List<Template> templates){
+		this.templates = templates;
+	}
 
 	public static List<History> getAll() {
 		List<History> l = new ArrayList<>();

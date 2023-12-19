@@ -2,12 +2,7 @@ package com.gutengmorgen.TimeDial.models;
 
 import java.util.List;
 
-import lombok.Getter;
-import lombok.Setter;
-
 public class Model<E> {
-	@Getter
-	@Setter
 	private int index = 0;
 	private List<E> list;
 
@@ -15,6 +10,22 @@ public class Model<E> {
 	}
 
 	public Model(List<E> list) {
+		this.list = list;
+	}
+
+	public int getIndex(){
+		return index;
+	}
+
+	public void setIndex(int index){
+		this.index = index;
+	}
+
+	public List<E> getList(){
+		return list;
+	}
+
+	public void setList(List<E> list){
 		this.list = list;
 	}
 
