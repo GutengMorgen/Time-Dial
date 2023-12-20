@@ -58,7 +58,7 @@ public class TrayUI {
 	}
 
 	public void setIcon(int num) {
-		String imageUrl = "src/main/resources/timer/" + num + ".jpg";
+		String imageUrl = "src/main/resources/images/timer/" + num + ".jpeg";
 		System.out.println(imageUrl);
 		trayIcon.setImage(Toolkit.getDefaultToolkit().getImage(imageUrl));
 	}

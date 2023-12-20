@@ -61,7 +61,7 @@ public class MainGUI extends JFrame {
 		instance = this;
 		timerHandler = new TimerHandler(this, 15);
 		setTitle("Time Dial");
-		setIconImage(Toolkit.getDefaultToolkit().getImage("src/main/resources/icon.jpg"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("src/main/resources/images/icon.jpeg"));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(450,420);
 		trayUI = new TrayUI(this);
